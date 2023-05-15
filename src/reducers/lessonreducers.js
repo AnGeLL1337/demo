@@ -53,6 +53,8 @@ const LessonUserSelect = (state, action) => {
     }
 }
 
+
+
 /**
  * Funkcia, ktorá aktualizuje lesson so zvoleným užívateľom.
  *
@@ -60,7 +62,7 @@ const LessonUserSelect = (state, action) => {
  * @param {Object} action Akcia, ktorá má byť vykonaná.
  * @param {Object} action.payload Payload akcie, obsahujúci lesson a užívatela.
  * @param {Object} action.payload.lesson Lesson, ktorá sa má aktualizovať.
- * @param {string} action.payload.user užívatel, ktorý si vybral lesson.
+ * @param {Object} action.payload.user užívatel, ktorý si vybral lesson.
  * @returns {Object} Nový stav s aktualizovanou lesson a zvoleným užívateľom.
  */
 
@@ -70,6 +72,72 @@ const updateLessonWithUser = (state, action) => {
     const newState = LessonUserSelect(state, { payload: { lesson, user } });
     return { ...state, ...newState };
 };
+/**
+
+ Updates the lesson type in the state based on the provided action payload.
+ @param {Object} state - The current state object.
+ @param {Object} action - The action object containing the payload.
+ @param {Object} action.payload - The payload object containing the lesson and type.
+ @param {Object} action.payload.lesson - The lesson object.
+ @param {string} action.payload.type - The type of the lesson.
+ @returns {Object} - The updated state object with the lesson type modified.
+ */
+const LessonTypeSelect = (state, action) => {
+    const {lesson, type} = action.payload
+    console.log("LessonTypeSelect", lesson, type);
+    return {
+        ...state,
+        [lesson.id]: {
+            ...state[lesson.id],
+            type
+        }
+    }
+};
+
+const updateLessonWithType = (state, action) => {
+    const { lesson, type } = action.payload;
+    console.log("updateLessonWithType", lesson, type);
+    const newState = LessonTypeSelect(state, { payload: { lesson, type } });
+    return { ...state, ...newState };
+}
+
+/**
+ * Aktualizuje stav store s výberom učebny pre danú lesson..
+ * @param {Object} state - Aktuálny stav lekcií.
+ * @param {Object} action - Akcia, ktorá má byť vykonaná.
+ * @param {Object} action.payload - Payload akcie, obsahujúci lesson a učebnu.
+ * @param {Object} action.payload.lesson - Lesson, ktorá sa má aktualizovať.
+ * @param {Object} action.payload.facility - Učebna, ktorá sa má priradiť k lesson.
+ * @returns {Object} Nový stav s aktualizovanou lesson a zvolenou učebnou.
+ */
+const LessonFacilitySelect = (state, action) => {
+    const {lesson, facility} = action.payload
+    console.log("LessonFacilitySelect", lesson, facility);
+    return {
+        ...state,
+        [lesson.id]: {
+            ...state[lesson.id],
+            facility
+        }
+    }
+}
+
+/**
+ * Funkcia, ktorá aktualizuje lesson so zvolenou učebnou.
+ * @param state - Aktuálny stav lekcií.
+ * @param action - Akcia, ktorá má byť vykonaná.
+ * @param action.payload - Payload akcie, obsahujúci lesson a učebnu.
+ * @param action.payload.lesson - Lesson, ktorá sa má aktualizovať.
+ * @param action.payload.facility - Učebna, ktorá sa má priradiť k lesson.
+ * @returns {*}
+ */
+
+const updateLessonWithFacility = (state, action) => {
+    const { lesson, facility } = action.payload;
+    console.log("updateLessonWithFacility", lesson, facility);
+    const newState = LessonFacilitySelect(state, { payload: { lesson, facility } });
+    return { ...state, ...newState };
+}
 
 /**
  * kompletne definovany stavovy automat pro lekce
@@ -89,7 +157,9 @@ export const LessonSlice = createSlice({
         lesson_Update: LessonUpdate,
         lesson_Search: SearchButton,
 
-        lesson_user_select: updateLessonWithUser
+        lesson_user_select: updateLessonWithUser,
+        lesson_type_select: updateLessonWithType,
+        lesson_facility_select: updateLessonWithFacility
     }
 })
 
