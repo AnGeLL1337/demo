@@ -10,6 +10,7 @@ import SearchButton from "../components/SearchButton";
  * @param {Object} action - akcia, ktorá spúšťa túto funkciu, obsahuje lesson, ktorú treba odstrániť
  * @returns {Object} nový stav aplikácie bez vybranej lesson
  */
+
 const LessonRemove = (state, action) => {
     console.log('volani stavove funkce, smazat lekce')
     const l = action.payload.lesson

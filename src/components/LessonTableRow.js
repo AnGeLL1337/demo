@@ -34,4 +34,5 @@ export  const LessonTableRow = ({lesson, actions}) => {
             </td>
         </tr>
     )
+
 }

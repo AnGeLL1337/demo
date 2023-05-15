@@ -7,7 +7,6 @@ import {bindLessonActions} from "../reducers/_main";
 
 export const LessonTypeSelectBox = (props) => {
     const {lesson} = props;
-
     const [selectedType, setSelectedType] = useState(lesson.type);
     const dispatch = useDispatch();
     const {onLessonTypeSelect} = bindLessonActions(dispatch);

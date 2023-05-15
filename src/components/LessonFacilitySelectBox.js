@@ -14,6 +14,7 @@ import {bindLessonActions} from "../reducers/_main";
  * @returns {JSX.Element} Komponenta pre výber učebny pre konkrétnu lesson.
  */
 
+
 export const LessonFacilitySelectBox = (props) => {
     const {lesson} = props;
     const [selectedFacility, setSelectedFacility] = useState(lesson.facility);

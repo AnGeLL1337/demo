@@ -6,7 +6,6 @@ import { LessonFetch, LessonFakeFetch } from "./LessonAsyncActions"
 /**
  * vytvori actions, ktere pri volani uz vse radne provedou
  * jsou zahrnuty i "asynchronni" akce
- *
  * @param {*} dispatch 
  * @returns 
  */
