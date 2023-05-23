@@ -1,7 +1,7 @@
-import { GroupActions } from "./groupreducers"
-import { LessonActions } from "./lessonreducers"
-import { GroupFetch, GroupFakeFetch } from "./GroupAsyncActions"
-import { LessonFetch, LessonFakeFetch } from "./LessonAsyncActions"
+import { GroupActions } from "reducers/groupreducers"
+import { LessonActions } from "reducers/lessonreducers"
+import { GroupFetch, GroupFakeFetch } from "reducers/GroupAsyncActions"
+import { LessonFetch, LessonFakeFetch } from "reducers/LessonAsyncActions"
 
 /**
  * vytvori actions, ktere pri volani uz vse radne provedou
@@ -37,6 +37,8 @@ export const bindLessonActions = (dispatch) => {
         onLessonUpdate: (payload) => dispatch(LessonActions.lesson_Update(payload)),
 
         onLessonUserSelect: (payload) => dispatch(LessonActions.lesson_user_select(payload)),
+        onLessonTypeSelect: (payload) => dispatch(LessonActions.lesson_type_select(payload)),
+        onLessonFacilitySelect: (payload) => dispatch(LessonActions.lesson_facility_select(payload)),
 
         lessonFetch: (id) => dispatch(LessonFetch(id)),
         lessonFakeFetch: (id) => dispatch(LessonFakeFetch(id)),

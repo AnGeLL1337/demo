@@ -13,8 +13,7 @@ export const LessonTypeSelectBox = (props) => {
     const handleChange = (value) => {
         const type = value === 'NULL' ? null : value;
         setSelectedType(type);
-        onLessonTypeSelect({lesson: lesson, type: type}); //##ADD it later when you figure out store
-        console.log(type);
+        onLessonTypeSelect({lesson: lesson, type: type});
 
     }
 
