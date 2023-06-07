@@ -42,7 +42,7 @@ const LessonUpdate = (state, action) => {
  * @param {string|null} action.payload.user - Výber použivateľa pre danú lesson. Ak je null, znamená to odstránenie výberu.
  * @returns {Object} - Nový stav store s aktualizovaným výberom používateľa pre danú lesson.
  */
-const LessonUserSelect = (state, action) => {
+const updateLessonWithUser = (state, action) => {
     const {lesson, user} = action.payload
     console.log("LessonUserSelect", lesson, user);
     return {
@@ -54,25 +54,6 @@ const LessonUserSelect = (state, action) => {
     }
 }
 
-
-
-/**
- * Funkcia, ktorá aktualizuje lesson so zvoleným užívateľom.
- *
- * @param {Object} state Aktuálny stav lekcií.
- * @param {Object} action Akcia, ktorá má byť vykonaná.
- * @param {Object} action.payload Payload akcie, obsahujúci lesson a užívatela.
- * @param {Object} action.payload.lesson Lesson, ktorá sa má aktualizovať.
- * @param {Object} action.payload.user užívatel, ktorý si vybral lesson.
- * @returns {Object} Nový stav s aktualizovanou lesson a zvoleným užívateľom.
- */
-
-const updateLessonWithUser = (state, action) => {
-    const { lesson, user } = action.payload;
-    console.log("updateLessonWithUser", lesson, user);
-    const newState = LessonUserSelect(state, { payload: { lesson, user } });
-    return { ...state, ...newState };
-};
 /**
 
  Updates the lesson type in the state based on the provided action payload.
@@ -83,7 +64,7 @@ const updateLessonWithUser = (state, action) => {
  @param {string} action.payload.type - The type of the lesson.
  @returns {Object} - The updated state object with the lesson type modified.
  */
-const LessonTypeSelect = (state, action) => {
+const updateLessonWithType = (state, action) => {
     const {lesson, type} = action.payload
     console.log("LessonTypeSelect", lesson, type);
     return {
@@ -95,13 +76,6 @@ const LessonTypeSelect = (state, action) => {
     }
 };
 
-const updateLessonWithType = (state, action) => {
-    const { lesson, type } = action.payload;
-    console.log("updateLessonWithType", lesson, type);
-    const newState = LessonTypeSelect(state, { payload: { lesson, type } });
-    return { ...state, ...newState };
-}
-
 /**
  * Aktualizuje stav store s výberom učebny pre danú lesson..
  * @param {Object} state - Aktuálny stav lekcií.
@@ -111,7 +85,7 @@ const updateLessonWithType = (state, action) => {
  * @param {Object} action.payload.facility - Učebna, ktorá sa má priradiť k lesson.
  * @returns {Object} Nový stav s aktualizovanou lesson a zvolenou učebnou.
  */
-const LessonFacilitySelect = (state, action) => {
+const updateLessonWithFacility = (state, action) => {
     const {lesson, facility} = action.payload
     console.log("LessonFacilitySelect", lesson, facility);
     return {
@@ -121,23 +95,6 @@ const LessonFacilitySelect = (state, action) => {
             facility
         }
     }
-}
-
-/**
- * Funkcia, ktorá aktualizuje lesson so zvolenou učebnou.
- * @param state - Aktuálny stav lekcií.
- * @param action - Akcia, ktorá má byť vykonaná.
- * @param action.payload - Payload akcie, obsahujúci lesson a učebnu.
- * @param action.payload.lesson - Lesson, ktorá sa má aktualizovať.
- * @param action.payload.facility - Učebna, ktorá sa má priradiť k lesson.
- * @returns {*}
- */
-
-const updateLessonWithFacility = (state, action) => {
-    const { lesson, facility } = action.payload;
-    console.log("updateLessonWithFacility", lesson, facility);
-    const newState = LessonFacilitySelect(state, { payload: { lesson, facility } });
-    return { ...state, ...newState };
 }
 
 /**

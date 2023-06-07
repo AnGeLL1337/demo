@@ -4,7 +4,13 @@ export const LessonQueryJSON = (id) => ({
     "query":
         `query ($id: ID!) {
             plannedLessonById(id: $id) {
-            id, name, lastchange
+            id, name, lastchange,
+            groups{
+            id,name}
+            users{
+            id email}
+            facilities{
+            id name}
             }
         }`,
     "variables": {"id": id}
