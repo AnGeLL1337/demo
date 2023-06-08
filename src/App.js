@@ -4,6 +4,7 @@ import {useState} from "react";
 import {AppProvider} from 'pages/AppProvider';
 import {LessonPageProvider} from 'pages/LessonPageProvider';
 import SearchBar from "./components/SearchButton";
+import {UserPage} from "./pages/UserPage";
 
 
 function App() {
@@ -15,8 +16,9 @@ function App() {
             <AppProvider>
                 <SearchBar handleSearch={setSearchTerm}/>
                 <LessonPageProvider id={searchTerm}/>
-
+                <UserPage/>
             </AppProvider>
+
 
         </div>
 
