@@ -20,7 +20,7 @@ export const LessonFetchHelper = (id, query, resultselector, dispatch, getState)
         return p
     }
     console.log('LessonFetchHelper' + id)
-    const p = query(id)
+    return query(id)
         .then(
             response => response.json(),
             error => error
@@ -38,11 +38,9 @@ export const LessonFetchHelper = (id, query, resultselector, dispatch, getState)
             error => error
         )
         .then(
-            json => log('dispatching')(dispatch(LessonActions.lesson_update(json))),
+            json => log('dispatching')(dispatch(LessonActions.lesson_replace(json))),
             error => error
         )
-
-    return p
 }
 
 /**

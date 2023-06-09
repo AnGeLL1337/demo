@@ -38,9 +38,9 @@ export const DeleteItem = (state, action) => {
  */
 export const ReplaceItem = (state, action) => {
     const newItem = action.payload;
-    state[newItem.id] = newItem
-
-    return state
+    return {
+        [newItem.id]: newItem
+    }
 }
 
 /**
