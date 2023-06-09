@@ -1,5 +1,5 @@
 import { UsersActions } from "./usersreducers";
-import { UsersQuery } from "../queries/UsersQuery";
+import { UserPageQuery } from "../queries/UserPageQuery";
 
 export const UsersFetchHelper = (query, resultSelector, dispatch, getState) => {
     const log = (text) => (p) => {
@@ -28,7 +28,7 @@ export const UsersFetchHelper = (query, resultSelector, dispatch, getState) => {
 export const UsersFetch = () => (dispatch, getState) => {
     const usersSelector = (json) => json.data.userPage; // Update the key to "userPage"
     const bodyfunc = async () => {
-        return await UsersFetchHelper(UsersQuery, usersSelector, dispatch, getState);
+        return await UsersFetchHelper(UserPageQuery, usersSelector, dispatch, getState);
     };
     return bodyfunc();
 };

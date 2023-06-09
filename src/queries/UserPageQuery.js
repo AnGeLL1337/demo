@@ -12,7 +12,7 @@ export const UsersQueryJSON = () => ({
         }`
 })
 
-export const UsersQuery = () =>
+export const UserPageQuery = () =>
     authorizedFetch('/gql', {
         body: JSON.stringify(UsersQueryJSON()),
     })
