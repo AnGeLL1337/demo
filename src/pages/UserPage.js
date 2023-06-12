@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { bindUsersActions } from "../reducers/_main";
+import { bindUserActions } from "../reducers/_main";
 import {UserTable} from "../components/UserTable";
 
 export const UserPage = () => {
@@ -8,8 +8,8 @@ export const UserPage = () => {
     const users = useSelector(state => state.users || []);
 
     useEffect(() => {
-        const { usersFetch } = bindUsersActions(dispatch);
-        usersFetch();
+        const { userFetch } = bindUserActions(dispatch);
+        userFetch();
     }, [dispatch]);
 
     return (

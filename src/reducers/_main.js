@@ -2,7 +2,8 @@ import { GroupActions } from "reducers/groupreducers"
 import { LessonActions } from "reducers/lessonreducers"
 import { GroupFetch, GroupFakeFetch } from "reducers/GroupAsyncActions"
 import { LessonFetch, LessonFakeFetch } from "reducers/LessonAsyncActions"
-import {UsersFetch} from "./UsersAsyncActions";
+import {UserFetch} from "./UsersAsyncActions";
+import {FacilityFetch} from "./FacilityAsyncActions";
 
 /**
  * vytvori actions, ktere pri volani uz vse radne provedou
@@ -47,8 +48,14 @@ export const bindLessonActions = (dispatch) => {
     }
 }
 
-export const bindUsersActions = (dispatch) => {
+export const bindUserActions = (dispatch) => {
     return {
-        usersFetch: () => dispatch(UsersFetch()),
+        userFetch: () => dispatch(UserFetch()),
+    }
+}
+
+export const bindFacilityActions = (dispatch) => {
+    return {
+        facilityFetch: () => dispatch(FacilityFetch()),
     }
 }

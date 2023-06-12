@@ -1,7 +1,7 @@
 import {authorizedFetch} from "./authorizedFetch";
 
 export const UsersQueryJSON = () => ({
-    "query":
+    query:
         `query {
             userPage{
                 id, 

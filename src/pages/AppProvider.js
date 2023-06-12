@@ -3,10 +3,13 @@ import { configureStore } from '@reduxjs/toolkit'
 
 import { bindGroupActions } from 'reducers/_main';
 import { bindLessonActions } from "reducers/_main";
-import { bindUsersActions } from "reducers/_main";
+import { bindUserActions } from "reducers/_main";
+import { bindFacilityActions } from "../reducers/_main";
 import { GroupReducer } from 'reducers/groupreducers';
 import { LessonReducer } from 'reducers/lessonreducers';
-import { UsersReducer } from 'reducers/usersreducers';
+import { UserReducer } from 'reducers/usersreducers';
+import { FacilityReducer } from "../reducers/facilityreducers";
+
 
 /**
  * Toto je hlavni store pro celou aplikaci. Zde zacleneno pro demonstraci. 
@@ -16,12 +19,14 @@ export const store = configureStore(
         reducer: {
             groups: GroupReducer,
             lessons: LessonReducer,
-            users: UsersReducer
+            users: UserReducer,
+            facilities: FacilityReducer
         }, 
         preloadedState: {
             groups: {},
             lessons: {},
-            users: { users: []}
+            users: { users: []},
+            facilities: { facilities: []}
         },
         devTools: true
 })
@@ -37,7 +42,8 @@ const dispatch = store.dispatch
 export const actions = {
     ...bindGroupActions(dispatch),
     ...bindLessonActions(dispatch),
-    ...bindUsersActions(dispatch),
+    ...bindUserActions(dispatch),
+    ...bindFacilityActions(dispatch),
 }
 
 /**
