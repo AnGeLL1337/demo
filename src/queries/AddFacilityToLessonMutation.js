@@ -1,10 +1,9 @@
 import {authorizedFetch} from "./authorizedFetch";
 
 const AddFacilityToLessonMutationJSON = (lessonId, facilityId) => ({
-    "query":`
+    query:`
     mutation {
-  plannedLessonFacilityInsert(
-    facilitylesson: {
+  plannedLessonFacilityInsert(facilitylesson: {
     planlessonId: "${lessonId}", 
     facilityId: "${facilityId}"}) {
     id
