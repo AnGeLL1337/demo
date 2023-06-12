@@ -16,10 +16,10 @@ export const LessonTable = ({lessons, actions}) => {
                     <th>Id</th>
                     <th>Název</th>
                     <th>Poslední změna</th>
+                    <th>Pořadí</th>
                     <th>Typ lekce</th>
-                    <th>Vyber učitela</th>
-                    <th>Vyber učebny</th>
-                    <th>Zmazať</th>
+                    <th>Změna pořadí</th>
+                    <th>Zmazať lekci</th>
                 </tr>
             </thead>
             <tbody>

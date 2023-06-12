@@ -12,6 +12,7 @@ const AddFacilityToLessonMutationJSON = (lessonId, facilityId) => ({
       id
       name
       lastchange
+      order
       groups {
         id
         name
