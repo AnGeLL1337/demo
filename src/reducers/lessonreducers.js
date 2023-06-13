@@ -34,7 +34,7 @@ const LessonRemove = (state, action) => {
 const LessonDuplicate = (state, action) => {
     console.log('volani stavove funkce, duplikovat lekce')
     const l = action.payload.lesson
-    const newLesson = {...l, id: l.id + "DUP-" + testValue+1, name: l.name + ' (kopie)'}
+    const newLesson = {...l, id: l.id + "DUP-", name: l.name + ' (kopie)'}
     state[newLesson.id] = newLesson
     return state
 

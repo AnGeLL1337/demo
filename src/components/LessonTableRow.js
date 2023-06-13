@@ -1,3 +1,4 @@
+import DuplicateLessonButton from "./DuplicateLessonButton";
 import UpdateLessonOrderButton from "./UpdateLessonOrderButton";
 import {useState} from "react";
 import {LessonTypeSelectBox} from "./LessonTypeSelectBox";
@@ -40,6 +41,9 @@ export  const LessonTableRow = ({lesson, actions}) => {
                     lastchange={lesson.lastchange}
                     actions={actions}
                 />
+            </td>
+            <td>
+                <DuplicateLessonButton lesson={lesson}/>
             </td>
         </tr>
     )
