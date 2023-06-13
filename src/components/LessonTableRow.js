@@ -1,7 +1,7 @@
-import {DeleteButton} from "components/DeleteButton";
-import {LessonTypeSelectBox} from "components/LessonTypeSelectBox";
 import UpdateLessonOrderButton from "./UpdateLessonOrderButton";
 import {useState} from "react";
+import {LessonTypeSelectBox} from "./LessonTypeSelectBox";
+import DeleteLessonButton from "./DeleteLessonButton";
 
 /**
  * Komponenta reprezentujúca jeden riadok v tabuľke s lekciami.
@@ -12,16 +12,7 @@ import {useState} from "react";
  * @returns {JSX.Element} JSX.Element
  */
 export  const LessonTableRow = ({lesson, actions}) => {
-
-
     const [order, setOrder] = useState(lesson.order);
-
-
-    const onClick = () => {
-        const payload = {lesson: lesson}
-        actions.onLessonRemove(payload)
-        console.log('jdu smazat hodinu')
-    }
 
     const onOrderChange = (event) => {
         setOrder(Number(event.target.value))
@@ -44,7 +35,11 @@ export  const LessonTableRow = ({lesson, actions}) => {
                 />
             </td>
             <td>
-                <DeleteButton onClick={onClick}>Zmaž</DeleteButton>
+                <DeleteLessonButton
+                    lessonId={lesson.id}
+                    lastchange={lesson.lastchange}
+                    actions={actions}
+                />
             </td>
         </tr>
     )

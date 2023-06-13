@@ -3,9 +3,21 @@ import {useDispatch} from "react-redux";
 import {LessonActions} from "../reducers/lessonreducers";
 import {UpdateLessonOrderMutation} from "../queries/UpdateLessonOrderMutation";
 
+/**
+ * Komponenta tlačidlo na aktualizáciu poradia hodín.
+ * @param {Object} props - Vlastnosti komponentu
+ * @param {string} props.lessonId - ID hodiny
+ * @param {string} props.lastchange - Posledná zmena hodiny
+ * @param {number} props.order - Poradie hodiny
+ * @returns {JSX.Element} - Tlačidlo na aktualizáciu poradia hodín
+ */
 const UpdateLessonOrderButton = ({lessonId, lastchange, order}) => {
     const dispatch = useDispatch();
 
+    /**
+     * Spracovanie kliknutia na tlačidlo UpdateLessonOrderButton.
+     * @async
+     */
     const handleClick = async () => {
         //console.log('UpdateLessonOrderButton: lessonId:', lessonId, 'lastchange:', lastchange, 'order:', order);
 

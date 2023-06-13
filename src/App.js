@@ -3,7 +3,7 @@ import 'App.css';
 import {useState} from "react";
 import {AppProvider} from 'pages/AppProvider';
 import {LessonPageProvider} from 'pages/LessonPageProvider';
-import SearchBar from "./components/SearchButton";
+import SearchButton from "./components/SearchButton";
 import {UserPage} from "./pages/UserPage";
 import {FacilityPage} from "./pages/FacilityPage";
 
@@ -15,7 +15,7 @@ function App() {
 
 
             <AppProvider>
-                <SearchBar handleSearch={setSearchTerm}/>
+                <SearchButton handleSearch={setSearchTerm}/>
                 <LessonPageProvider id={searchTerm}/>
                 <UserPage/>
                 <FacilityPage/>

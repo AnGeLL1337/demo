@@ -8,7 +8,7 @@ import { InputGroup, FormControl, Button} from 'react-bootstrap';
  * @returns {JSX.Element} Vráti JSX komponentu zobrazujúcu vyhľadávací panel.
  */
 
-const SearchBar = ({handleSearch}) => {
+const SearchButton = ({handleSearch}) => {
     const [searchTerm, setSearchTerm] = useState('');
 
 
@@ -36,4 +36,4 @@ const SearchBar = ({handleSearch}) => {
     );
 };
 
-export default SearchBar;
+export default SearchButton;

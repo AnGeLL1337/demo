@@ -1,9 +1,12 @@
+/**
+ *  Súbor obsahujúci stavový automat pre lekcie.
+ */
+
 import {createSlice} from "@reduxjs/toolkit";
 
 import {CreateItem, DeleteItem, ReplaceItem, UpdateItem, SelectItem} from "./keyedreducers";
 import SearchButton from "../components/SearchButton";
 
-const testValue = 0 //test value used to increment every time i duplicate another lesson(placeholder)
 /**
  * Funkcia pre odstránenie vybranej lesson zo storu aplikácie.
  *
@@ -13,11 +16,21 @@ const testValue = 0 //test value used to increment every time i duplicate anothe
  */
 
 const LessonRemove = (state, action) => {
-    console.log('volani stavove funkce, smazat lekce')
-    const l = action.payload.lesson
-    delete state[l.id]
-    return state
+    console.log('volani stavove funkce, smazat lekce');
+    const lesson = action.payload.lesson;
+    const newState = {...state};
+    delete newState[lesson];
+    return newState;
 }
+
+/**
+ * Funkcia pre duplikovanie lekcie.
+ *
+ * @param {Object} state - Aktuálny stav aplikácie.
+ * @param {Object} action - Akcia, ktorá spúšťa túto funkciu a obsahuje lekciu, ktorú treba duplikovať.
+ * @returns {Object} - Nový stav aplikácie s duplicitou lekcie.
+ */
+
 const LessonDuplicate = (state, action) => {
     console.log('volani stavove funkce, duplikovat lekce')
     const l = action.payload.lesson

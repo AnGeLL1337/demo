@@ -3,9 +3,20 @@ import { useDispatch } from 'react-redux';
 import { LessonActions } from '../reducers/lessonreducers';
 import { AddUserToLessonMutation } from '../queries/AddUserToLessonMutation';
 
+/**
+ * Komponenta tlačidlo, ktoré pridáva učitela do hodiny.
+ * @param {Object} props - Vlastnosti komponenty
+ * @param {string} props.userId - ID učiteľa
+ * @param {string} props.lessonId - ID hodiny
+ * @returns {JSX.Element} - Tlačidlo pre pridanie učiteľa do hodiny
+ */
 const AddUserToLessonButton = ({ userId, lessonId }) => {
     const dispatch = useDispatch();
 
+    /**
+     * Spracovanie kliknutia na tlačidlo AddUserToLessonButton.
+     * @async
+     */
     const handleClick = async () => {
         try {
             const response = await AddUserToLessonMutation({ userId, lessonId });
