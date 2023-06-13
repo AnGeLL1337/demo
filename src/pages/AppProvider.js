@@ -1,11 +1,9 @@
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 
-import { bindGroupActions } from 'reducers/_main';
 import { bindLessonActions } from "reducers/_main";
 import { bindUserActions } from "reducers/_main";
 import { bindFacilityActions } from "../reducers/_main";
-import { GroupReducer } from 'reducers/groupreducers';
 import { LessonReducer } from 'reducers/lessonreducers';
 import { UserReducer } from 'reducers/usersreducers';
 import { FacilityReducer } from "../reducers/facilityreducers";
@@ -17,13 +15,11 @@ import { FacilityReducer } from "../reducers/facilityreducers";
 export const store = configureStore(
     { 
         reducer: {
-            groups: GroupReducer,
             lessons: LessonReducer,
             users: UserReducer,
             facilities: FacilityReducer
         }, 
         preloadedState: {
-            groups: {},
             lessons: {},
             users: { users: []},
             facilities: { facilities: []}
@@ -40,7 +36,6 @@ const dispatch = store.dispatch
  * Tim se zabezpeci jejich "purity" (nejsou zavisle na globalnich parametrech)
  */
 export const actions = {
-    ...bindGroupActions(dispatch),
     ...bindLessonActions(dispatch),
     ...bindUserActions(dispatch),
     ...bindFacilityActions(dispatch),
