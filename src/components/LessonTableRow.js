@@ -1,6 +1,4 @@
 import {DeleteButton} from "components/DeleteButton";
-import {LessonUserSelectBox} from "components/LessonUserSelectBox";
-import {LessonFacilitySelectBox} from "components/LessonFacilitySelectBox";
 import {LessonTypeSelectBox} from "components/LessonTypeSelectBox";
 import UpdateLessonOrderButton from "./UpdateLessonOrderButton";
 import {useState} from "react";
@@ -45,8 +43,6 @@ export  const LessonTableRow = ({lesson, actions}) => {
                     actions={actions}
                 />
             </td>
-            <td><LessonUserSelectBox lesson={lesson}> </LessonUserSelectBox></td>
-            <td><LessonFacilitySelectBox lesson={ lesson }> </LessonFacilitySelectBox></td>
             <td>
                 <DeleteButton onClick={onClick}>Zmaž</DeleteButton>
             </td>
