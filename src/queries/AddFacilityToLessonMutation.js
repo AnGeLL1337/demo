@@ -25,6 +25,7 @@ const AddFacilityToLessonMutationJSON = (lessonId, facilityId) => ({
         id
         name
       }
+      plan{id}
     }
   }
 }`

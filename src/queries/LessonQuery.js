@@ -1,7 +1,7 @@
 import {authorizedFetch} from "./authorizedFetch";
 
 export const LessonQueryJSON = (id) => ({
-    "query":
+    query:
         `query ($id: ID!) {
             plannedLessonById(id: $id) {
             id, name, lastchange, order,
@@ -10,7 +10,9 @@ export const LessonQueryJSON = (id) => ({
             users{
             id email}
             facilities{
-            id name}
+            id name
+            }
+            plan{id}
             }
         }`,
     "variables": {"id": id}

@@ -36,6 +36,7 @@ export const bindLessonActions = (dispatch) => {
     return {
 
         onLessonRemove: (payload) => dispatch(LessonActions.lesson_Remove(payload)),
+        onLessonDuplicate: (payload) => dispatch(LessonActions.lesson_Duplicate(payload)),
         onLessonUpdate: (payload) => dispatch(LessonActions.lesson_Update(payload)),
 
         onLessonUserSelect: (payload) => dispatch(LessonActions.lesson_user_select(payload)),

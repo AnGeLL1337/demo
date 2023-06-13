@@ -3,6 +3,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {CreateItem, DeleteItem, ReplaceItem, UpdateItem, SelectItem} from "./keyedreducers";
 import SearchButton from "../components/SearchButton";
 
+const testValue = 0 //test value used to increment every time i duplicate another lesson(placeholder)
 /**
  * Funkcia pre odstránenie vybranej lesson zo storu aplikácie.
  *
@@ -17,7 +18,14 @@ const LessonRemove = (state, action) => {
     delete state[l.id]
     return state
 }
+const LessonDuplicate = (state, action) => {
+    console.log('volani stavove funkce, duplikovat lekce')
+    const l = action.payload.lesson
+    const newLesson = {...l, id: l.id + "DUP-" + testValue+1, name: l.name + ' (kopie)'}
+    state[newLesson.id] = newLesson
+    return state
 
+}
 /**
  * Aktualizuje existujúce hodnoty pre lesson s daným `id` v store na základe nových hodnôt poskytnutých v `action.payload.lesson`.
  *
@@ -114,6 +122,7 @@ export const LessonSlice = createSlice({
         lesson_Remove: LessonRemove,
         lesson_Update: LessonUpdate,
         lesson_Search: SearchButton,
+        lesson_Duplicate: LessonDuplicate,
 
         lesson_user_select: updateLessonWithUser,
         lesson_type_select: updateLessonWithType,
