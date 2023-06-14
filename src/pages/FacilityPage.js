@@ -14,6 +14,7 @@ export const FacilityPage = () => {
 
     return (
         <div>
+            <h2>Facilities</h2>
             <FacilityTable facilities={facilities}/>
         </div>
     );

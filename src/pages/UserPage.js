@@ -14,6 +14,7 @@ export const UserPage = () => {
 
     return (
         <div>
+            <h2>Users</h2>
             <UserTable users={users}/>
         </div>
     );
