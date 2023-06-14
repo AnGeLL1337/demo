@@ -2,21 +2,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'App.css';
 import {useState} from "react";
 import {AppProvider} from 'pages/AppProvider';
-import {LessonPageProvider} from 'pages/LessonPageProvider';
+import {SelectedLessonProvider} from 'pages/SelectedLessonProvider';
 import SearchButton from "./components/SearchButton";
 import {UserPage} from "./pages/UserPage";
 import {FacilityPage} from "./pages/FacilityPage";
+import LoadAllLessonsButton from "./components/LoadAllLessons";
+import {LessonPage} from "./pages/LessonsProvider";
 
 
 function App() {
-    const [searchTerm, setSearchTerm] = useState('');
+
     return (
         <div className="App">
 
 
             <AppProvider>
-                <SearchButton handleSearch={setSearchTerm}/>
-                <LessonPageProvider id={searchTerm}/>
+                <SearchButton/>
+                <LoadAllLessonsButton/>
+                <SelectedLessonProvider/>
+                <LessonPage/>
                 <UserPage/>
                 <FacilityPage/>
             </AppProvider>

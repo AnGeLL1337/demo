@@ -10,8 +10,8 @@ import {useSelector} from "react-redux";
  * @returns {JSX.Element} JSX.Element
  */
 export const UserTableRow = ({ user }) => {
-    const lesson = useSelector(state => state.lessons);
-    const lessonId = Object.keys(lesson);
+    const lesson = useSelector((state) => state.selectedLesson.selectedLesson);
+    const lessonId = lesson ? lesson.id : null;
     return (
         <tr>
             <td>{user.id}</td>

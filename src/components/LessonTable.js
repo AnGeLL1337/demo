@@ -8,7 +8,8 @@ import  {LessonTableRow} from "./LessonTableRow";
  */
 
 export const LessonTable = ({lessons, actions}) => {
-    console.log(lessons)
+    const lessonsArray = Object.values(lessons);
+
     return (
         <table className="table table-hover table-stripped">
             <thead>
@@ -23,7 +24,9 @@ export const LessonTable = ({lessons, actions}) => {
                 </tr>
             </thead>
             <tbody>
-               <LessonTableRow lesson={lessons} actions={actions}/>
+            {lessonsArray.map((lesson) => (
+                <LessonTableRow key={lesson.id} lesson={lesson} actions={actions} />
+            ))}
             </tbody>
         </table>
     )

@@ -7,6 +7,7 @@ import { bindFacilityActions } from "../reducers/_main";
 import { LessonReducer } from 'reducers/lessonreducers';
 import { UserReducer } from 'reducers/usersreducers';
 import { FacilityReducer } from "../reducers/facilityreducers";
+import {SelectedLessonReducer} from "../reducers/selectedLessonReducer";
 
 
 /**
@@ -17,12 +18,13 @@ export const store = configureStore(
         reducer: {
             lessons: LessonReducer,
             users: UserReducer,
-            facilities: FacilityReducer
+            facilities: FacilityReducer,
+            selectedLesson: SelectedLessonReducer,
         }, 
         preloadedState: {
             lessons: {},
             users: { users: []},
-            facilities: { facilities: []}
+            facilities: { facilities: []},
         },
         devTools: true
 })

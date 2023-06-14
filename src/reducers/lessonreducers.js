@@ -118,6 +118,13 @@ const updateLessonWithFacility = (state, action) => {
     }
 }
 
+const lessonpage_add = (state, action) => {
+    const lessons = action.payload;
+    lessons.forEach((lesson) => {
+        state[lesson.id] = lesson;
+    });
+};
+
 /**
  * kompletne definovany stavovy automat pro lekce
  */
@@ -139,9 +146,11 @@ export const LessonSlice = createSlice({
 
         lesson_user_select: updateLessonWithUser,
         lesson_type_select: updateLessonWithType,
-        lesson_facility_select: updateLessonWithFacility
+        lesson_facility_select: updateLessonWithFacility,
+
+        lessonpage_add: lessonpage_add,
     }
-})
+});
 
 //z rezu odvozene akce
 export const LessonActions = LessonSlice.actions

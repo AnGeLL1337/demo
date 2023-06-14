@@ -8,8 +8,9 @@ import AddFacilityToLessonButton from "./AddFacilityToLessonButton";
  */
 
 export const FacilityTableRow = ({ facility }) => {
-    const lesson = useSelector(state => state.lessons);
-    const lessonId = Object.keys(lesson);
+    const lesson = useSelector((state) => state.selectedLesson.selectedLesson);
+    const lessonId = lesson ? lesson.id : null;
+
     return (
         <tr>
             <td>{facility.id}</td>

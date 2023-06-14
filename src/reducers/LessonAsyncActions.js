@@ -1,7 +1,6 @@
 import {LessonActions} from "./lessonreducers";
 
 import {LessonQuery} from "../queries/LessonQuery";
-import {fakeQueryLesson} from "../queries/fakequerylesson";
 
 /**
  * Ask for the item on server and adds it or update it in the store to the heap
@@ -38,7 +37,7 @@ export const LessonFetchHelper = (id, query, resultselector, dispatch, getState)
             error => error
         )
         .then(
-            json => log('dispatching')(dispatch(LessonActions.lesson_replace(json))),
+            json => log('dispatching')(dispatch(LessonActions.lesson_add(json))),
             error => error
         )
 }
@@ -62,21 +61,3 @@ export const LessonFetch = (id) => (dispatch, getState) => {
     return bodyfunc()
 }
 
-/**
- * Fetch the group from server checks its type and asks once more for detailed data. Finally puts the result in the store.
- * @param {*} id
- * @returns
- */
-
-export const LessonFakeFetch = (id) => (dispatch, getState) => {
-    const lessonSelector = (json) => json.data.plannedLessonById
-    const bodyfunc = async () => {
-        let lessonData = await LessonFetchHelper(id, fakeQueryLesson, lessonSelector, dispatch, getState)
-
-        if (lessonData.type !== "cd49e152-610c-11ed-9f29-001a7dda7110") {
-            lessonData = await LessonFetchHelper(id, fakeQueryLesson, lessonSelector, dispatch, getState)
-        }
-        return lessonData
-    }
-    return bodyfunc()
-}

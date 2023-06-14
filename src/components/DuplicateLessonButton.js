@@ -5,6 +5,7 @@ import { AddUserToLessonMutation } from '../queries/AddUserToLessonMutation';
 import {AddDuplicateLessonMutation} from "../queries/AddDuplicateLessonMutation";
 import {AddFacilityToLessonMutation} from "../queries/AddFacilityToLessonMutation";
 import {AddGroupToLessonMutation} from "../queries/AddGroupToLessonMutation";
+import {SelectedLessonActions} from "../reducers/selectedLessonReducer";
 
 const DuplicateLessonButton = ({ lesson }) => {
     const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const DuplicateLessonButton = ({ lesson }) => {
                 const updatedLesson = data.data.plannedLessonInsert.lesson;
                 console.log("duplicating...ok")
 
-                dispatch(LessonActions.lesson_replace(updatedLesson));
+                dispatch(LessonActions.lesson_add(updatedLesson));
                 console.time("FOROF")
                 for(const user of lesson.users) {
                     const response = await AddUserToLessonMutation({lessonId: updatedLesson.id, userId: user.id});
@@ -27,7 +28,8 @@ const DuplicateLessonButton = ({ lesson }) => {
 
                     if (data.data.plannedLessonUserInsert.msg === 'ok') {
                         const updatedLesson = data.data.plannedLessonUserInsert.lesson;
-                        dispatch(LessonActions.lesson_replace(updatedLesson));
+                        dispatch(LessonActions.lesson_update(updatedLesson));
+                        dispatch(SelectedLessonActions.setSelectedLesson(updatedLesson));
                     }
                     else
                     {
@@ -42,7 +44,8 @@ const DuplicateLessonButton = ({ lesson }) => {
 
                     if (data.data.plannedLessonFacilityInsert.msg === 'ok') {
                         const updatedLesson = data.data.plannedLessonFacilityInsert.lesson;
-                        dispatch(LessonActions.lesson_replace(updatedLesson));
+                        dispatch(LessonActions.lesson_update(updatedLesson));
+                        dispatch(SelectedLessonActions.setSelectedLesson(updatedLesson));
                     }
                     else
                     {
@@ -57,7 +60,8 @@ const DuplicateLessonButton = ({ lesson }) => {
 
                     if (data.data.plannedLessonGroupInsert.msg === 'ok') {
                         const updatedLesson = data.data.plannedLessonGroupInsert.lesson;
-                        dispatch(LessonActions.lesson_replace(updatedLesson));
+                        dispatch(LessonActions.lesson_update(updatedLesson));
+                        dispatch(SelectedLessonActions.setSelectedLesson(updatedLesson));
                     }
                     else
                     {

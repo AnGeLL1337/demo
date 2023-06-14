@@ -15,15 +15,12 @@ export const LessonLarge = ({lesson, actions}) => {
         <Card>
             <Card.Header>
                 <Card.Title>
-                    Lekce {lesson.id}
+                    Selected Lesson {lesson.id}
                 </Card.Title>
             </Card.Header>
             <Card.Body>
                 <LessonCard lessons={lesson} actions={actions} />
             </Card.Body>
- {/*           <Card.Body>
-                {JSON.stringify(lesson)}
-            </Card.Body>*/}
         </Card>
     )
 }

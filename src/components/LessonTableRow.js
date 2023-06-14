@@ -27,7 +27,7 @@ export  const LessonTableRow = ({lesson, actions}) => {
             <td>{lesson.order}</td>
             <td><LessonTypeSelectBox lesson={lesson}></LessonTypeSelectBox></td>
             <td>
-                <input type="number" value={order} onChange={onOrderChange} ></input>
+                <input className="w-25" type="number" value={order} onChange={onOrderChange} ></input>
                 <UpdateLessonOrderButton
                     lessonId={lesson.id}
                     lastchange={lesson.lastchange}
