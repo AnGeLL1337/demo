@@ -1,4 +1,3 @@
-import DeleteLessonButton from "./DeleteLessonButton";
 
 /**
  * Komponenta reprezentujúca jeden riadok v tabuľke s lekciami.
@@ -17,13 +16,6 @@ export  const SelectedLessonTableRow = ({lesson, actions}) => {
             <td>{lesson.name}</td>
             <td>{lesson.lastchange}</td>
             <td>{lesson.order}</td>
-            <td>
-                <DeleteLessonButton
-                    lessonId={lesson.id}
-                    lastchange={lesson.lastchange}
-                    actions={actions}
-                />
-            </td>
         </tr>
     )
 

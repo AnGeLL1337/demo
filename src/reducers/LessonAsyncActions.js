@@ -48,6 +48,7 @@ export const LessonFetchHelper = (id, query, resultselector, dispatch, getState)
  * @returns
  */
 
+// Not using right now
 export const LessonFetch = (id) => (dispatch, getState) => {
     const lessonSelector = (json) => json.data.plannedLessonById
     const bodyfunc = async () => {
