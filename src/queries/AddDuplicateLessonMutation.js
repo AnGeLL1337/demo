@@ -22,5 +22,5 @@ const AddDuplicateLessonMutationJSON = (lesson) => ({
 
 export const AddDuplicateLessonMutation = (props) =>
     authorizedFetch('/gql', {
-        body: JSON.stringify(AddDuplicateLessonMutationJSON(props.lesson, props.planID)),
+        body: JSON.stringify(AddDuplicateLessonMutationJSON(props.lesson)),
     })
