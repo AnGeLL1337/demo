@@ -22,7 +22,6 @@ const DuplicateLessonButton = ({ lesson }) => {
 
                 dispatch(LessonActions.lesson_add(updatedLesson));
                 dispatch(SelectedLessonActions.setSelectedLesson(updatedLesson));
-                console.time("FOROF")
                 for(const user of lesson.users) {
                     const response = await AddUserToLessonMutation({lessonId: updatedLesson.id, userId: user.id});
                     const data = await response.json();
@@ -37,8 +36,6 @@ const DuplicateLessonButton = ({ lesson }) => {
                         console.log("error")
                     }
                 }
-                console.time("FOROF")
-                console.time("FOROF2")
                 for(const facility of lesson.facilities) {
                     const response = await AddFacilityToLessonMutation({lessonId: updatedLesson.id, facilityId: facility.id});
                     const data = await response.json();
@@ -53,8 +50,6 @@ const DuplicateLessonButton = ({ lesson }) => {
                         console.log("error")
                     }
                 }
-                console.time("FOROF2")
-                console.time("FOROF3")
                 for(const group of lesson.groups) {
                     const response = await AddGroupToLessonMutation({lessonId: updatedLesson.id, groupId: group.id});
                     const data = await response.json();
@@ -69,7 +64,6 @@ const DuplicateLessonButton = ({ lesson }) => {
                         console.log("error")
                     }
                 }
-                console.time("FOROF3")
 
                 }
             else
@@ -77,10 +71,10 @@ const DuplicateLessonButton = ({ lesson }) => {
                 console.log("error")
             }
 
-
         } catch (error) {
             console.log(error);
         }
+
     };
 
 

@@ -33,7 +33,7 @@ const SearchButton = () => {
                 onChange={handleInputChange}
             />
             <Button variant="primary" id="button-addon2" onClick={handleSearchClick}>
-                Select a lesson
+                Select a selectedLesson
             </Button>
         </InputGroup>
     );

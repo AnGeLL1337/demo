@@ -31,7 +31,7 @@ export const LessonTypeSelectBox = (props) => {
     const handleChange = (value) => {
         const type = value === 'NULL' ? null : value;
         setSelectedType(type);
-        //onLessonTypeSelect({lesson: lesson, type: type}); //saving to redux, not needed for now
+        //onLessonTypeSelect({selectedLesson: selectedLesson, type: type}); //saving to redux, not needed for now
         //call select type mutation
         changeType(lesson).then(r => console.log("changeType done", r))
 

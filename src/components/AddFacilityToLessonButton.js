@@ -2,6 +2,7 @@ import React from "react";
 import {useDispatch} from "react-redux";
 import {LessonActions} from "../reducers/lessonreducers";
 import {AddFacilityToLessonMutation} from "../queries/AddFacilityToLessonMutation";
+import { SelectedLessonActions } from "../reducers/selectedLessonReducer";
 
 /**
  * Komponenta tlačidlo, ktoré pridáva miestnosť do hodiny.
@@ -25,14 +26,15 @@ const AddFacilityToLessonButton = ({facilityId, lessonId}) => {
 
             if (data.data.plannedLessonFacilityInsert.msg === 'ok') {
                 const updatedLesson = data.data.plannedLessonFacilityInsert.lesson;
-                console.log('AddFacilityToLessonButton: updatedLesson:', updatedLesson); // Log the updated lesson
+                console.log('AddFacilityToLessonButton: updatedLesson:', updatedLesson); // Log the updated selectedLesson
                 dispatch(LessonActions.lesson_update(updatedLesson));
+                dispatch(SelectedLessonActions.setSelectedLesson(updatedLesson));
                 console.log(`Facility with ID ${facilityId} added to lesson with ID ${lessonId}`);
             } else {
-                console.log('Facility is not added to lesson');
+                console.log('Facility is not added to selectedLesson');
             }
         } catch (error) {
-            console.error('Error adding facility to lesson:', error);
+            console.error('Error adding facility to selectedLesson:', error);
         }
     };
 

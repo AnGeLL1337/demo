@@ -17,11 +17,12 @@ export const SelectedLessonTable = ({lesson, actions}) => {
                 <th>Název</th>
                 <th>Poslední změna</th>
                 <th>Pořadí</th>
-                <th>Zmazať lekci</th>
+                <th>Učitelia</th>
+                <th>Zařízení</th>
             </tr>
             </thead>
             <tbody>
-            <SelectedLessonTableRow lesson={lesson} actions={actions}/>
+            <SelectedLessonTableRow selectedLesson={lesson} actions={actions}/>
             </tbody>
         </table>
     )

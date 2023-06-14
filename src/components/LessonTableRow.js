@@ -7,9 +7,9 @@ import DeleteLessonButton from "./DeleteLessonButton";
 /**
  * Komponenta reprezentujúca jeden riadok v tabuľke s lekciami.
  *
- * @param {Object} lesson - Objekt predstavujúci lesson, obsahujúci vlastnosti id, name, lastchange a user.
+ * @param {Object} lesson - Objekt predstavujúci selectedLesson, obsahujúci vlastnosti id, name, lastchange a user.
  * @param {Object} actions - Objekt s akciami, ktoré sa majú vykonať pri kliknutí na tlačidlá v riadku.
- * @param {Function} actions.onLessonRemove - Funkcia pre vymazanie lesson zo storu.
+ * @param {Function} actions.onLessonRemove - Funkcia pre vymazanie selectedLesson zo storu.
  * @returns {JSX.Element} JSX.Element
  */
 export  const LessonTableRow = ({lesson, actions}) => {

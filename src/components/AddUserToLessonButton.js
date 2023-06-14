@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { LessonActions } from '../reducers/lessonreducers';
 import { AddUserToLessonMutation } from '../queries/AddUserToLessonMutation';
+import { SelectedLessonActions } from "../reducers/selectedLessonReducer";
 
 /**
  * Komponenta tlačidlo, ktoré pridáva učitela do hodiny.
@@ -25,14 +26,15 @@ const AddUserToLessonButton = ({ userId, lessonId }) => {
 
             if (data.data.plannedLessonUserInsert.msg === 'ok') {
                 const updatedLesson = data.data.plannedLessonUserInsert.lesson;
-                console.log('AddUserToLessonButton: updatedLesson:', updatedLesson); // Log the updated lesson
+                console.log('AddUserToLessonButton: updatedLesson:', updatedLesson); // Log the updated selectedLesson
                 dispatch(LessonActions.lesson_update(updatedLesson));
+                dispatch(SelectedLessonActions.setSelectedLesson(updatedLesson));
                 console.log(`User with ID ${userId} added to lesson with ID ${lessonId}`);
             } else {
-                console.log('User is not added to lesson');
+                console.log('User is not added to selectedLesson');
             }
         } catch (error) {
-            console.error('Error adding user to lesson:', error);
+            console.error('Error adding user to selectedLesson:', error);
         }
     };
 

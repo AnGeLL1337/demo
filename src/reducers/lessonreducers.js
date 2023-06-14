@@ -8,11 +8,11 @@ import {CreateItem, DeleteItem, ReplaceItem, UpdateItem, SelectItem} from "./key
 import SearchButton from "../components/SearchButton";
 
 /**
- * Funkcia pre odstránenie vybranej lesson zo storu aplikácie.
+ * Funkcia pre odstránenie vybranej selectedLesson zo storu aplikácie.
  *
  * @param {Object} state - aktuálny stav aplikácie
- * @param {Object} action - akcia, ktorá spúšťa túto funkciu, obsahuje lesson, ktorú treba odstrániť
- * @returns {Object} nový stav aplikácie bez vybranej lesson
+ * @param {Object} action - akcia, ktorá spúšťa túto funkciu, obsahuje selectedLesson, ktorú treba odstrániť
+ * @returns {Object} nový stav aplikácie bez vybranej selectedLesson
  */
 
 const LessonRemove = (state, action) => {
@@ -40,11 +40,11 @@ const LessonDuplicate = (state, action) => {
 
 }
 /**
- * Aktualizuje existujúce hodnoty pre lesson s daným `id` v store na základe nových hodnôt poskytnutých v `action.payload.lesson`.
+ * Aktualizuje existujúce hodnoty pre selectedLesson s daným `id` v store na základe nových hodnôt poskytnutých v `action.payload.selectedLesson`.
  *
- * @param {Object} state Aktuálny stav lesson.
- * @param {Object} action Akcia s novými hodnotami pre lesson.
- * @returns {Object} Nový stav lesson po aktualizácii.
+ * @param {Object} state Aktuálny stav selectedLesson.
+ * @param {Object} action Akcia s novými hodnotami pre selectedLesson.
+ * @returns {Object} Nový stav selectedLesson po aktualizácii.
  */
 
 const LessonUpdate = (state, action) => {
@@ -53,37 +53,16 @@ const LessonUpdate = (state, action) => {
     return state
 }
 
-/**
- * Aktualizuje stav store s výberom používateľa pre danú lesson.
- *
- * @param {Object} state - Aktuálny stav store.
- * @param {Object} action - Akcia, ktorá sa vykonáva.
- * @param {Object} action.payload - Payload akcie.
- * @param {Object} action.payload.lesson - Lesson, pre ktorú sa má aktualizovať výber používateľa.
- * @param {string|null} action.payload.user - Výber použivateľa pre danú lesson. Ak je null, znamená to odstránenie výberu.
- * @returns {Object} - Nový stav store s aktualizovaným výberom používateľa pre danú lesson.
- */
-const updateLessonWithUser = (state, action) => {
-    const {lesson, user} = action.payload
-    console.log("LessonUserSelect", lesson, user);
-    return {
-        ...state,
-        [lesson.id]: {
-            ...state[lesson.id],
-            user
-        }
-    }
-}
 
 /**
 
- Updates the lesson type in the state based on the provided action payload.
+ Updates the selectedLesson type in the state based on the provided action payload.
  @param {Object} state - The current state object.
  @param {Object} action - The action object containing the payload.
- @param {Object} action.payload - The payload object containing the lesson and type.
- @param {Object} action.payload.lesson - The lesson object.
- @param {string} action.payload.type - The type of the lesson.
- @returns {Object} - The updated state object with the lesson type modified.
+ @param {Object} action.payload - The payload object containing the selectedLesson and type.
+ @param {Object} action.payload.selectedLesson - The selectedLesson object.
+ @param {string} action.payload.type - The type of the selectedLesson.
+ @returns {Object} - The updated state object with the selectedLesson type modified.
  */
 const updateLessonWithType = (state, action) => {
     const {lesson, type} = action.payload
@@ -97,26 +76,6 @@ const updateLessonWithType = (state, action) => {
     }
 };
 
-/**
- * Aktualizuje stav store s výberom učebny pre danú lesson..
- * @param {Object} state - Aktuálny stav lekcií.
- * @param {Object} action - Akcia, ktorá má byť vykonaná.
- * @param {Object} action.payload - Payload akcie, obsahujúci lesson a učebnu.
- * @param {Object} action.payload.lesson - Lesson, ktorá sa má aktualizovať.
- * @param {Object} action.payload.facility - Učebna, ktorá sa má priradiť k lesson.
- * @returns {Object} Nový stav s aktualizovanou lesson a zvolenou učebnou.
- */
-const updateLessonWithFacility = (state, action) => {
-    const {lesson, facility} = action.payload
-    console.log("LessonFacilitySelect", lesson, facility);
-    return {
-        ...state,
-        [lesson.id]: {
-            ...state[lesson.id],
-            facility
-        }
-    }
-}
 
 const lessonpage_add = (state, action) => {
     const lessons = action.payload;
@@ -144,9 +103,7 @@ export const LessonSlice = createSlice({
         lesson_Search: SearchButton,
         lesson_Duplicate: LessonDuplicate,
 
-        lesson_user_select: updateLessonWithUser,
         lesson_type_select: updateLessonWithType,
-        lesson_facility_select: updateLessonWithFacility,
 
         lessonpage_add: lessonpage_add,
     }

@@ -28,14 +28,14 @@ const UpdateLessonOrderButton = ({lessonId, lastchange, order}) => {
 
             if (data.data.plannedLessonUpdate.msg === 'ok') {
                 const updatedLesson = data.data.plannedLessonUpdate.lesson;
-                console.log('UpdateLessonOrderButton: updatedLesson:', updatedLesson); // Log the updated lesson
+                console.log('UpdateLessonOrderButton: updatedLesson:', updatedLesson); // Log the updated selectedLesson
                 dispatch(LessonActions.lesson_update(updatedLesson));
                 console.log(`Lesson with ID ${lessonId} updated`);
             } else {
                 console.log('Lesson is not updated');
             }
         } catch (error) {
-            console.error('Error updating lesson order:', error);
+            console.error('Error updating selectedLesson order:', error);
         }
     };
 

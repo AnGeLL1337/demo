@@ -37,7 +37,7 @@ const DeleteLessonButton = ({ lessonId, lastchange }) => {
                 console.log('Lesson is not removed');
             }
         } catch (error) {
-            console.error('Error removing lesson:', error);
+            console.error('Error removing selectedLesson:', error);
         }
     };
 
