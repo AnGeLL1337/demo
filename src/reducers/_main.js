@@ -1,7 +1,7 @@
 import { LessonActions } from "reducers/lessonreducers"
 import { LessonFetch } from "reducers/LessonAsyncActions"
-import { UserFetch } from "./UsersAsyncActions";
-import { FacilityFetch } from "./FacilityAsyncActions";
+import { UserFetch } from "./Users/UsersAsyncActions";
+import { FacilityFetch } from "./Facility/FacilityAsyncActions";
 import { LessonPageFetch } from "./LessonPageAsyncActions";
 
 
@@ -14,6 +14,7 @@ import { LessonPageFetch } from "./LessonPageAsyncActions";
  */
 export const bindLessonActions = (dispatch) => {
     return {
+        lessonPageFetch: () => dispatch(LessonPageFetch()),
         onLessonRemove: (payload) => dispatch(LessonActions.lesson_Remove(payload)),
         onLessonDuplicate: (payload) =>
             dispatch(LessonActions.lesson_Duplicate(payload)),
@@ -22,7 +23,7 @@ export const bindLessonActions = (dispatch) => {
         onLessonTypeSelect: (payload) =>
             dispatch(LessonActions.lesson_type_select(payload)),
         lessonFetch: (id) => dispatch(LessonFetch(id)),
-        lessonPageFetch: () => dispatch(LessonPageFetch()),
+
     };
 };
 

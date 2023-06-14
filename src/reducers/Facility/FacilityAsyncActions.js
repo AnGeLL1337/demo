@@ -1,5 +1,5 @@
 import {FacilityActions} from "./facilityreducers";
-import {FacilityPageQuery} from "../queries/FacilityPageQuery";
+import {FacilityPageQuery} from "../../queries/FacilityPageQuery";
 
 export const FacilityFetchHelper = (query, resultSelector, dispatch, getState) => {
     const log = (text) => (p) => {

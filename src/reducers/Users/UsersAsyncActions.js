@@ -1,5 +1,5 @@
 import { UserActions } from "./usersreducers";
-import { UserPageQuery } from "../queries/UserPageQuery";
+import { UserPageQuery } from "../../queries/UserPageQuery";
 
 export const UsersFetchHelper = (query, resultSelector, dispatch, getState) => {
     const log = (text) => (p) => {

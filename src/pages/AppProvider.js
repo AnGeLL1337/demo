@@ -5,8 +5,8 @@ import { bindLessonActions } from "reducers/_main";
 import { bindUserActions } from "reducers/_main";
 import { bindFacilityActions } from "../reducers/_main";
 import { LessonReducer } from 'reducers/lessonreducers';
-import { UserReducer } from 'reducers/usersreducers';
-import { FacilityReducer } from "../reducers/facilityreducers";
+import { UserReducer } from 'reducers/Users/usersreducers';
+import { FacilityReducer } from "../reducers/Facility/facilityreducers";
 import {SelectedLessonReducer} from "../reducers/selectedLessonReducer";
 
 

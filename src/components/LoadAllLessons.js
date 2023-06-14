@@ -1,12 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { LessonPageFetch } from '../reducers/LessonPageAsyncActions';
+import { bindLessonActions } from "../reducers/_main";
 
 const LoadAllLessonsButton = () => {
     const dispatch = useDispatch();
 
     const handleButtonClick = () => {
-        dispatch(LessonPageFetch());
+        const { lessonPageFetch } = bindLessonActions(dispatch);
+        lessonPageFetch();
     };
 
     return (

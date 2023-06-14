@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'App.css';
-import {useState} from "react";
 import {AppProvider} from 'pages/AppProvider';
 import {SelectedLessonProvider} from 'pages/SelectedLessonProvider';
 import SearchButton from "./components/SearchButton";
@@ -15,7 +14,6 @@ function App() {
     return (
         <div className="App">
 
-
             <AppProvider>
                 <SearchButton/>
                 <LoadAllLessonsButton/>
@@ -25,19 +23,8 @@ function App() {
                 <FacilityPage/>
             </AppProvider>
 
-
         </div>
 
-        /*
-      <div className="App">
-
-        <AppProvider>
-          <GroupPageProvider id="2d9dcd22-a4a2-11ed-b9df-0242ac120003" />
-        </AppProvider>
-
-
-      </div>
-      */
     );
 }
 
