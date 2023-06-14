@@ -17,19 +17,17 @@ const DuplicateLessonButton = ({ lesson }) => {
             const data = await response.json();
 
             if (data.data.plannedLessonInsert.msg === 'ok') {
-                const updatedLesson = data.data.plannedLessonInsert.lesson;
+                var updatedLesson = data.data.plannedLessonInsert.lesson;
                 console.log("duplicating...ok")
 
                 dispatch(LessonActions.lesson_add(updatedLesson));
-                dispatch(SelectedLessonActions.setSelectedLesson(updatedLesson));
                 for(const user of lesson.users) {
                     const response = await AddUserToLessonMutation({lessonId: updatedLesson.id, userId: user.id});
                     const data = await response.json();
 
                     if (data.data.plannedLessonUserInsert.msg === 'ok') {
-                        const updatedLesson = data.data.plannedLessonUserInsert.lesson;
+                        updatedLesson = data.data.plannedLessonUserInsert.lesson;
                         dispatch(LessonActions.lesson_update(updatedLesson));
-                        dispatch(SelectedLessonActions.setSelectedLesson(updatedLesson));
                     }
                     else
                     {
@@ -41,9 +39,8 @@ const DuplicateLessonButton = ({ lesson }) => {
                     const data = await response.json();
 
                     if (data.data.plannedLessonFacilityInsert.msg === 'ok') {
-                        const updatedLesson = data.data.plannedLessonFacilityInsert.lesson;
+                        updatedLesson = data.data.plannedLessonFacilityInsert.lesson;
                         dispatch(LessonActions.lesson_update(updatedLesson));
-                        dispatch(SelectedLessonActions.setSelectedLesson(updatedLesson));
                     }
                     else
                     {
@@ -55,9 +52,8 @@ const DuplicateLessonButton = ({ lesson }) => {
                     const data = await response.json();
 
                     if (data.data.plannedLessonGroupInsert.msg === 'ok') {
-                        const updatedLesson = data.data.plannedLessonGroupInsert.lesson;
+                        updatedLesson = data.data.plannedLessonGroupInsert.lesson;
                         dispatch(LessonActions.lesson_update(updatedLesson));
-                        dispatch(SelectedLessonActions.setSelectedLesson(updatedLesson));
                     }
                     else
                     {
@@ -65,6 +61,7 @@ const DuplicateLessonButton = ({ lesson }) => {
                     }
                 }
 
+                dispatch(SelectedLessonActions.setSelectedLesson(updatedLesson));
                 }
             else
             {
