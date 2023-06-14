@@ -21,6 +21,7 @@ const DuplicateLessonButton = ({ lesson }) => {
                 console.log("duplicating...ok")
 
                 dispatch(LessonActions.lesson_add(updatedLesson));
+                dispatch(SelectedLessonActions.setSelectedLesson(updatedLesson));
                 console.time("FOROF")
                 for(const user of lesson.users) {
                     const response = await AddUserToLessonMutation({lessonId: updatedLesson.id, userId: user.id});

@@ -23,6 +23,7 @@ export const LessonPageQueryJSON = () => ({
             plan {
                 id
             }
+            topic{lessons{type{id name}}}
         }
     }`
 });

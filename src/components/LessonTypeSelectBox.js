@@ -19,7 +19,7 @@ export const LessonTypeSelectBox = (props) => {
         const data = await response.json();
         if (data.data.plannedLessonUpdate.msg === 'ok') {
             const updatedLesson = data.data.plannedLessonUpdate.lesson;
-            dispatch(LessonActions.lesson_replace(updatedLesson));
+            dispatch(LessonActions.lesson_update(updatedLesson));
             console.log("Successfully changed type")
         }
         else
@@ -44,7 +44,7 @@ export const LessonTypeSelectBox = (props) => {
             aria-label="LessonTypeBox"
             value={selectedType ?? 'NULL'}
             onChange={event => handleChange(event.target.value, lesson)}>
-            <option>{lesson.topic.lessons[0].type.name}</option>
+           <option>SS</option>
             <option value="e2b7c66a-95e1-11ed-a1eb-0242ac120002">cvičení</option>
             <option value="e2b7cbf6-95e1-11ed-a1eb-0242ac120002">přednáška</option>
             <option value="e2b7cfac-95e1-11ed-a1eb-0242ac120002">laboratorní cvičení</option>
