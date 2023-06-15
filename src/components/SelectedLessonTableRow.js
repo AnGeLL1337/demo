@@ -1,3 +1,4 @@
+import RemoveUserFromLessonButton from './RemoveUserFromLessonButton';
 
 /**
  * Komponenta reprezentujúca jeden riadok v tabuľke s lekciami.
@@ -17,7 +18,10 @@ export  const SelectedLessonTableRow = ({selectedLesson}) => {
             <td>
                 {selectedLesson.users?.length > 0 ? (
                     selectedLesson.users.map((user) => (
-                        <div key={user.id}>{user.email}</div>
+                        <>
+                            <div key={user.id}>{user.email}</div>
+                            <RemoveUserFromLessonButton userId={user.id} lessonId={selectedLesson.id} />
+                        </>
                     ))
                     ) : (
                         <div>No users</div>
