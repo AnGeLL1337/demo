@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { AddUserToLessonMutation } from '../queries/AddUserToLessonMutation';
-import {actions} from "../pages/AppProvider";
+import {addUserAsync} from "../actions/AddUserAsync";
 
 /**
  * Komponenta tlačidlo, ktoré pridáva učitela do hodiny.
@@ -13,33 +12,10 @@ import {actions} from "../pages/AppProvider";
 const AddUserToLessonButton = ({ userId, lessonId }) => {
     const dispatch = useDispatch();
 
-    /**
-     * Spracovanie kliknutia na tlačidlo AddUserToLessonButton.
-     * @async
-     */
-    const handleClick = async () => {
-        try {
-            const response = await AddUserToLessonMutation({ userId, lessonId });
-            const data = await response.json();
-            console.log('AddUserToLessonButton: response:', data); // Log the response data
-
-            if (data.data.plannedLessonUserInsert.msg === 'ok') {
-                const updatedLesson = data.data.plannedLessonUserInsert.lesson;
-                console.log('AddUserToLessonButton: updatedLesson:', updatedLesson); // Log the updated selectedLesson
-                dispatch(actions.onLessonUpdate(updatedLesson));
-                dispatch(actions.setSelectedLesson(updatedLesson));
-                console.log(`User with ID ${userId} added to lesson with ID ${lessonId}`);
-            } else {
-                console.log('User is not added to selectedLesson');
-            }
-        } catch (error) {
-            console.error('Error adding user to selectedLesson:', error);
-        }
-    };
-
 
     return (
-        <button className="btn btn-primary" onClick={handleClick}>
+        <button className="btn btn-primary" onClick={() =>
+        {dispatch(addUserAsync({userId,lessonId}))}}>
             Add User to Lesson
         </button>
     );

@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { DeleteLessonMutation } from '../queries/DeleteLessonMutation';
-import {actions} from "../pages/AppProvider";
+import {deleteLessonAsync} from "../actions/DeleteLessonAsync";
 
 /**
  * Komponenta tlačidlo, ktoré odstraňuje hodinu.
@@ -18,27 +17,6 @@ const DeleteLessonButton = ({ lessonId, lastchange }) => {
     const setState0 = useCallback(() => setState(0), []);
     const setState1 = useCallback(() => setState(1), []);
 
-    /**
-     * Spracovanie kliknutia na tlačidlo DeleteLessonButton.
-     * @async
-     */
-    const handleClick = async () => {
-        try {
-            const response = await DeleteLessonMutation({ lessonId, lastchange });
-            const data = await response.json();
-            console.log('DeleteLessonButton: response:', data); // Log the response data
-
-            if (data.data.plannedLessonRemove.msg === 'ok') {
-                dispatch(actions.onLessonRemove({lesson: lessonId}));
-                dispatch(actions.onSelectedLessonRemove());
-                console.log(`Lesson with ID ${lessonId} removed`);
-            } else {
-                console.log('Lesson is not removed');
-            }
-        } catch (error) {
-            console.error('Error removing selectedLesson:', error);
-        }
-    };
 
     if (state === 0) {
         // Cervene tlacitko nema byt zobrazeno
@@ -54,7 +32,8 @@ const DeleteLessonButton = ({ lessonId, lastchange }) => {
                 <button className="btn btn-sm btn-warning" onClick={setState0}>
                     Cancel
                 </button>
-                <button className="btn btn-sm btn-danger" onClick={handleClick}>
+                <button className="btn btn-sm btn-danger" onClick={() =>
+                dispatch(deleteLessonAsync({lessonId,lastchange}))}>
                     Remove Lesson
                 </button>
             </>
