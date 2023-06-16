@@ -12,6 +12,7 @@ const AddUserToLessonMutationJSON = (lessonId, userId) => ({
             id
             name
             lastchange
+            order
             groups {
                 id
                 name
@@ -24,6 +25,10 @@ const AddUserToLessonMutationJSON = (lessonId, userId) => ({
                 id
                 name
             }
+            plan {
+                id
+            }
+            topic{lessons{type{id name}}}
         }
     }
 }`
