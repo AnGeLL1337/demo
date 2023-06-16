@@ -1,25 +1,20 @@
 import Form from 'react-bootstrap/Form'
 import {useState} from 'react'
 import {useDispatch} from "react-redux";
-import { LessonActions } from '../reducers/lessonreducers';
-
-
-
-//import {bindLessonActions} from "../reducers/_main"; //obsolete for now, might be deleted later
 import {ChangeLessonTypeMutation} from "../queries/ChangeLessonTypeMutation";
+import {actions} from "../pages/AppProvider";
 
 export const LessonTypeSelectBox = (props) => {
     const {lesson} = props;
     const [selectedType, setSelectedType] = useState(lesson.type);
     const dispatch = useDispatch();
-    //const {onLessonTypeSelect} = bindLessonActions(dispatch); //obsolete for now
 
     async function changeType(lesson) {
         const response = await ChangeLessonTypeMutation(lesson.id, lesson.lastchange, lesson.topic.lessons[0].type.id);
         const data = await response.json();
         if (data.data.plannedLessonUpdate.msg === 'ok') {
             const updatedLesson = data.data.plannedLessonUpdate.lesson;
-            dispatch(LessonActions.lesson_update(updatedLesson));
+            dispatch(actions.onLessonUpdate(updatedLesson));
             console.log("Successfully changed type")
         }
         else

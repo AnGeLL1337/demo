@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { InputGroup, FormControl, Button} from 'react-bootstrap';
 import {useDispatch, useSelector} from "react-redux";
-import {SelectedLessonActions} from "../reducers/selectedLessonReducer";
+import {actions} from "../pages/AppProvider";
 
 /**
  * Komponenta zobrazujúca vyhľadávací panel s textovým polom a tlačidlom pre vyhľadávanie selectedLesson podľa ID.
@@ -20,7 +20,7 @@ const SearchButton = () => {
     const handleSearchClick = ()  => {
         const selectedLesson = lessons[searchTerm] || null;
         console.log("handleSearchClick", selectedLesson);
-        dispatch(SelectedLessonActions.setSelectedLesson(selectedLesson));
+        dispatch(actions.setSelectedLesson(selectedLesson));
     };
 
     return (

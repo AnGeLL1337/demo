@@ -6,7 +6,7 @@ const setSelectedLesson = (state, action) => {
     state.selectedLesson = lesson || null;
 };
 
-const removeSelectedLesson = (state) => {
+const selectedLessonRemove = (state) => {
     state.selectedLesson = null;
 }
 
@@ -16,7 +16,7 @@ const selectedLessonSlice = createSlice({
     initialState: { selectedLesson: null }, // Začiatočná hodnota pre selectedLesson je null
     reducers: {
         setSelectedLesson,
-        removeSelectedLesson,
+        selectedLessonRemove,
 
     },
 });

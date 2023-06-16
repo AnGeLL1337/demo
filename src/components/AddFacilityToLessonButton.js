@@ -1,8 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import {LessonActions} from "../reducers/lessonreducers";
 import {AddFacilityToLessonMutation} from "../queries/AddFacilityToLessonMutation";
-import { SelectedLessonActions } from "../reducers/selectedLessonReducer";
+import {actions} from "../pages/AppProvider";
 
 /**
  * Komponenta tlačidlo, ktoré pridáva miestnosť do hodiny.
@@ -27,8 +26,8 @@ const AddFacilityToLessonButton = ({facilityId, lessonId}) => {
             if (data.data.plannedLessonFacilityInsert.msg === 'ok') {
                 const updatedLesson = data.data.plannedLessonFacilityInsert.lesson;
                 console.log('AddFacilityToLessonButton: updatedLesson:', updatedLesson); // Log the updated selectedLesson
-                dispatch(LessonActions.lesson_update(updatedLesson));
-                dispatch(SelectedLessonActions.setSelectedLesson(updatedLesson));
+                dispatch(actions.onLessonUpdate(updatedLesson));
+                dispatch(actions.setSelectedLesson(updatedLesson));
                 console.log(`Facility with ID ${facilityId} added to lesson with ID ${lessonId}`);
             } else {
                 console.log('Facility is not added to selectedLesson');

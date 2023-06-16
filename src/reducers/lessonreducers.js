@@ -4,8 +4,6 @@
 
 import {createSlice} from "@reduxjs/toolkit";
 
-import {CreateItem, DeleteItem, ReplaceItem, UpdateItem, SelectItem} from "./keyedreducers";
-import SearchButton from "../components/SearchButton";
 
 /**
  * Funkcia pre odstránenie vybranej selectedLesson zo storu aplikácie.
@@ -15,7 +13,7 @@ import SearchButton from "../components/SearchButton";
  * @returns {Object} nový stav aplikácie bez vybranej selectedLesson
  */
 
-const LessonRemove = (state, action) => {
+const lessonRemove = (state, action) => {
     console.log('volani stavove funkce, smazat lekce');
     const lesson = action.payload.lesson;
     const newState = {...state};
@@ -29,7 +27,6 @@ const LessonRemove = (state, action) => {
  * @param {Object} state - Aktuálny stav aplikácie.
  * @param {Object} action - Akcia, ktorá spúšťa túto funkciu a obsahuje lekciu, ktorú treba duplikovať.
  * @returns {Object} - Nový stav aplikácie s duplicitou lekcie.
- */
 
 const LessonDuplicate = (state, action) => {
     console.log('volani stavove funkce, duplikovat lekce')
@@ -37,8 +34,10 @@ const LessonDuplicate = (state, action) => {
     const newLesson = {...l, id: l.id + "DUP-", name: l.name + ' (kopie)'}
     state[newLesson.id] = newLesson
     return state
-
 }
+ */
+
+
 /**
  * Aktualizuje existujúce hodnoty pre selectedLesson s daným `id` v store na základe nových hodnôt poskytnutých v `action.payload.selectedLesson`.
  *
@@ -47,9 +46,9 @@ const LessonDuplicate = (state, action) => {
  * @returns {Object} Nový stav selectedLesson po aktualizácii.
  */
 
-const LessonUpdate = (state, action) => {
-    const l = action.payload.lesson
-    state[l.id] = {...state[l.id], ...l}
+const lessonUpdate = (state, action) => {
+    const lesson = action.payload
+    state[lesson.id] = {...state[lesson.id], ...lesson}
     return state
 }
 
@@ -63,7 +62,7 @@ const LessonUpdate = (state, action) => {
  @param {Object} action.payload.selectedLesson - The selectedLesson object.
  @param {string} action.payload.type - The type of the selectedLesson.
  @returns {Object} - The updated state object with the selectedLesson type modified.
- */
+
 const updateLessonWithType = (state, action) => {
     const {lesson, type} = action.payload
     console.log("LessonTypeSelect", lesson, type);
@@ -75,6 +74,7 @@ const updateLessonWithType = (state, action) => {
         }
     }
 };
+ */
 
 
 const lessonpage_add = (state, action) => {
@@ -82,6 +82,11 @@ const lessonpage_add = (state, action) => {
     lessons.forEach((lesson) => {
         state[lesson.id] = lesson;
     });
+};
+
+const lessonAdd = (state, action) => {
+    const lesson = action.payload;
+    state[lesson.id] = lesson;
 };
 
 /**
@@ -92,20 +97,15 @@ export const LessonSlice = createSlice({
     name: 'lessons',
     initialState: {},
     reducers: {
-        lesson_add: CreateItem,
-        lesson_delete: DeleteItem,
-        lesson_replace: ReplaceItem,
-        lesson_update: UpdateItem,
-        lesson_select: SelectItem,
+        lessonAdd,
+        lessonRemove,
+        lessonUpdate,
+        lessonpage_add, //LessonPageAsync
 
-        lesson_Remove: LessonRemove,
-        lesson_Update: LessonUpdate,
-        lesson_Search: SearchButton,
-        lesson_Duplicate: LessonDuplicate,
-
-        lesson_type_select: updateLessonWithType,
-
-        lessonpage_add: lessonpage_add,
+        //lesson_Duplicate: LessonDuplicate,
+        //lesson_type_select: updateLessonWithType,
+        //lesson_replace: ReplaceItem,
+        //lesson_select: SelectItem,
     }
 });
 

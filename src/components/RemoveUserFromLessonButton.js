@@ -1,8 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { LessonActions } from '../reducers/lessonreducers';
 import { RemoveUserFromLessonMutation } from '../queries/RemoveUserFromLessonMutation';
-import { SelectedLessonActions } from '../reducers/selectedLessonReducer';
+import { actions } from "../pages/AppProvider";
 
 /**
  * Komponenta tlačidlo, které odebírá uživatele z hodiny.
@@ -27,8 +26,8 @@ const RemoveUserFromLessonButton = ({ userId, lessonId }) => {
             if (data.data.plannedLessonUserDelete.msg === 'ok') {
                 const updatedLesson = data.data.plannedLessonUserDelete.lesson;
                 console.log('RemoveUserFromLessonButton: updatedLesson:', updatedLesson); // Log the updated selectedLesson
-                dispatch(LessonActions.lesson_update(updatedLesson));
-                dispatch(SelectedLessonActions.setSelectedLesson(updatedLesson));
+                dispatch(actions.onLessonUpdate(updatedLesson));
+                dispatch(actions.setSelectedLesson(updatedLesson));
                 console.log(`User with ID ${userId} removed from lesson with ID ${lessonId}`);
             } else {
                 console.log('User is not removed from selectedLesson');

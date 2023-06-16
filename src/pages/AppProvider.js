@@ -4,10 +4,11 @@ import { configureStore } from '@reduxjs/toolkit'
 import { bindLessonActions } from "reducers/_main";
 import { bindUserActions } from "reducers/_main";
 import { bindFacilityActions } from "../reducers/_main";
+import { bindLessonPageActions } from "../reducers/_main";
 import { LessonReducer } from 'reducers/lessonreducers';
 import { UserReducer } from 'reducers/Users/usersreducers';
 import { FacilityReducer } from "../reducers/Facility/facilityreducers";
-import {SelectedLessonReducer} from "../reducers/selectedLessonReducer";
+import { SelectedLessonReducer } from "../reducers/selectedLessonReducer";
 
 
 /**
@@ -41,6 +42,7 @@ export const actions = {
     ...bindLessonActions(dispatch),
     ...bindUserActions(dispatch),
     ...bindFacilityActions(dispatch),
+    ...bindLessonPageActions(dispatch),
 }
 
 /**

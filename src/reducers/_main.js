@@ -3,6 +3,7 @@ import { LessonFetch } from "reducers/LessonAsyncActions"
 import { UserFetch } from "./Users/UsersAsyncActions";
 import { FacilityFetch } from "./Facility/FacilityAsyncActions";
 import { LessonPageFetch } from "./LessonPageAsyncActions";
+import {SelectedLessonActions} from "./selectedLessonReducer";
 
 
 /**
@@ -15,15 +16,14 @@ import { LessonPageFetch } from "./LessonPageAsyncActions";
 export const bindLessonActions = (dispatch) => {
     return {
         lessonPageFetch: () => dispatch(LessonPageFetch()),
-        onLessonRemove: (payload) => dispatch(LessonActions.lesson_Remove(payload)),
-        onLessonDuplicate: (payload) =>
-            dispatch(LessonActions.lesson_Duplicate(payload)),
-        onLessonUpdate: (payload) =>
-            dispatch(LessonActions.lesson_Update(payload)),
-        onLessonTypeSelect: (payload) =>
-            dispatch(LessonActions.lesson_type_select(payload)),
         lessonFetch: (id) => dispatch(LessonFetch(id)),
+        onLessonRemove: (payload) => dispatch(LessonActions.lessonRemove(payload)),
+        onLessonUpdate: (payload) => dispatch(LessonActions.lessonUpdate(payload)),
+        onLessonAdd: (payload) => dispatch(LessonActions.lessonAdd(payload)),
+        onLessonPageAdd: (payload) => dispatch(LessonActions.lessonpage_add(payload)),
 
+        //onLessonDuplicate: (payload) => dispatch(LessonActions.lesson_Duplicate(payload)),
+        //onLessonTypeSelect: (payload) => dispatch(LessonActions.lesson_type_select(payload)),
     };
 };
 
@@ -38,3 +38,11 @@ export const bindFacilityActions = (dispatch) => {
         facilityFetch: () => dispatch(FacilityFetch()),
     };
 };
+
+export const bindLessonPageActions = (dispatch) => {
+    return {
+        lessonPageFetch: () => dispatch(LessonPageFetch()),
+        setSelectedLesson: (payload) => dispatch(SelectedLessonActions.setSelectedLesson(payload)),
+        onSelectedLessonRemove: () => dispatch(SelectedLessonActions.selectedLessonRemove()),
+    };
+}

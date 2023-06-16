@@ -1,5 +1,5 @@
-import {LessonActions} from "./lessonreducers";
 import {LessonPageQuery} from "../queries/LessonPageQuery";
+import {actions} from "../pages/AppProvider";
 
 export const LessonPageFetchHelper = (query, resultselector, dispatch) => {
     const log = (text) => (p) => {
@@ -22,7 +22,7 @@ export const LessonPageFetchHelper = (query, resultselector, dispatch) => {
             error => error
             )
         .then(
-            json => log('dispatching')(dispatch(LessonActions.lessonpage_add(json))),
+            json => log('dispatching')(dispatch(actions.onLessonPageAdd(json))),
             error => error
         )
 }

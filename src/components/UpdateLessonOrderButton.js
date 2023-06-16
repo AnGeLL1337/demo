@@ -1,7 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import {LessonActions} from "../reducers/lessonreducers";
 import {UpdateLessonOrderMutation} from "../queries/UpdateLessonOrderMutation";
+import {actions} from "../pages/AppProvider";
 
 /**
  * Komponenta tlačidlo na aktualizáciu poradia hodín.
@@ -29,7 +29,8 @@ const UpdateLessonOrderButton = ({lessonId, lastchange, order}) => {
             if (data.data.plannedLessonUpdate.msg === 'ok') {
                 const updatedLesson = data.data.plannedLessonUpdate.lesson;
                 console.log('UpdateLessonOrderButton: updatedLesson:', updatedLesson); // Log the updated selectedLesson
-                dispatch(LessonActions.lesson_update(updatedLesson));
+                dispatch(actions.onLessonUpdate(updatedLesson));
+                dispatch(actions.setSelectedLesson(updatedLesson));
                 console.log(`Lesson with ID ${lessonId} updated`);
             } else {
                 console.log('Lesson is not updated');

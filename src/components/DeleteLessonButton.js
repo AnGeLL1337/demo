@@ -1,8 +1,7 @@
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { LessonActions } from '../reducers/lessonreducers';
 import { DeleteLessonMutation } from '../queries/DeleteLessonMutation';
-import {SelectedLessonActions} from "../reducers/selectedLessonReducer";
+import {actions} from "../pages/AppProvider";
 
 /**
  * Komponenta tlačidlo, ktoré odstraňuje hodinu.
@@ -30,8 +29,8 @@ const DeleteLessonButton = ({ lessonId, lastchange }) => {
             console.log('DeleteLessonButton: response:', data); // Log the response data
 
             if (data.data.plannedLessonRemove.msg === 'ok') {
-                dispatch(LessonActions.lesson_Remove({lesson: lessonId}));
-                dispatch(SelectedLessonActions.removeSelectedLesson());
+                dispatch(actions.onLessonRemove({lesson: lessonId}));
+                dispatch(actions.onSelectedLessonRemove());
                 console.log(`Lesson with ID ${lessonId} removed`);
             } else {
                 console.log('Lesson is not removed');

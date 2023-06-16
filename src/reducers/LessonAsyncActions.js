@@ -1,6 +1,5 @@
-import {LessonActions} from "./lessonreducers";
-
 import {LessonQuery} from "../queries/LessonQuery";
+import {actions} from "../pages/AppProvider";
 
 /**
  * Ask for the item on server and adds it or update it in the store to the heap
@@ -37,7 +36,7 @@ export const LessonFetchHelper = (id, query, resultselector, dispatch, getState)
             error => error
         )
         .then(
-            json => log('dispatching')(dispatch(LessonActions.lesson_add(json))),
+            json => log('dispatching')(dispatch(actions.onLessonAdd(json))),
             error => error
         )
 }
