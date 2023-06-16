@@ -3,14 +3,21 @@ import {authorizedFetch} from "./authorizedFetch";
 
 const RemoveLessonMutationJSON = (lessonId, lastchange) => ({
     query:`
-    mutation{
+    mutation(
+        $lessonId: ID!,
+        $lastchange: DateTime!
+    ){
         plannedLessonRemove(lesson:{
-            id:"${lessonId}",
-            lastchange:"${lastchange}"}) {
+            id: $lessonId,
+            lastchange: $lastchange}) {
         id
         msg
         }
-    }`
+    }`,
+    variables:{
+        lessonId: lessonId,
+        lastchange: lastchange,
+    }
 });
 
 /**

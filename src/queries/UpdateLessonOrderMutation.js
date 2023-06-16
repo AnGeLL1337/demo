@@ -2,7 +2,7 @@ import {authorizedFetch} from "./authorizedFetch";
 
 /**
  *
- * @param {string}lessonId
+ * @param {ID}lessonId
  * @param {string}lastchange
  * @param {number}order
  * @returns {{}}
@@ -10,11 +10,15 @@ import {authorizedFetch} from "./authorizedFetch";
  */
 const UpdateLessonOrderMutationJSON = (lessonId, lastchange, order) => ({
     query:`
-    mutation{
+    mutation (
+        $lessonId: ID!
+        $lastchange: DateTime!
+        $order: Int
+    ){
         plannedLessonUpdate(lesson:{
-            id:"${lessonId}", 
-            lastchange: "${lastchange}", 
-            order:${order}}) {
+            id: $lessonId, 
+            lastchange: $lastchange, 
+            order: $order}) {
     id
     msg
     lesson{
@@ -30,7 +34,12 @@ const UpdateLessonOrderMutationJSON = (lessonId, lastchange, order) => ({
         }
     }
   }
-}`
+}`,
+    variables: {
+        lessonId: lessonId,
+        lastchange: lastchange,
+        order: order,
+    }
 
 });
 

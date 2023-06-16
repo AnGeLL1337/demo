@@ -2,10 +2,13 @@ import {authorizedFetch} from "./authorizedFetch";
 
 const AddGroupToLessonMutationJSON = (lessonId, groupId) => ({
     query:`
-    mutation{
-  plannedLessonGroupInsert(
-  grouplesson:{groupId:"${groupId}" 
-  planlessonId:"${lessonId}"  }) {
+    mutation(
+        $lessonId: ID!,
+        $groupId: ID!,
+    ){
+  plannedLessonGroupInsert(grouplesson:{
+    groupId: $groupId, 
+    planlessonId: $lessonId  }) {
     id
     msg
     lesson {
@@ -28,7 +31,11 @@ const AddGroupToLessonMutationJSON = (lessonId, groupId) => ({
       plan{id}
     }
   }
-}`
+}`,
+    variables:{
+        lessonId: lessonId,
+        groupId: groupId,
+    }
 });
 
 export const AddGroupToLessonMutation = (props) =>
