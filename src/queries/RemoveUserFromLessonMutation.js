@@ -2,11 +2,13 @@ import { authorizedFetch } from "./authorizedFetch";
 
 const RemoveUserFromLessonMutationJSON = (lessonId, userId) => ({
     "query": `
-    mutation {
-      plannedLessonUserDelete(userlesson: {
-        userId: "${userId}",
-        planlessonId: "${lessonId}"
-      }) {
+    mutation(
+        $lessonId: ID!,
+        $userId: ID!
+    ){
+    plannedLessonUserDelete(userlesson: {
+        userId: $userId,
+        planlessonId: $lessonId}) {
         id
         msg
         lesson {
@@ -31,9 +33,12 @@ const RemoveUserFromLessonMutationJSON = (lessonId, userId) => ({
             }
             topic{lessons{type{id name}}}
         }
-      }
     }
-  `
+}`,
+    variables:{
+        lessonId: lessonId,
+        userId: userId,
+    }
 });
 
 export const RemoveUserFromLessonMutation = (props) =>
