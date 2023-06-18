@@ -76,6 +76,11 @@ const updateLessonWithType = (state, action) => {
 };
  */
 
+/**
+ * Pridáva lekcie získané zo stránky lekcií do stavu aplikácie.
+ * @param {Object} state - Aktuálny stav aplikácie.
+ * @param {Object} action - Akcia obsahujúca lekcie na pridanie.
+ */
 
 const lessonpage_add = (state, action) => {
     const lessons = action.payload;
@@ -84,6 +89,11 @@ const lessonpage_add = (state, action) => {
     });
 };
 
+/**
+ * Pridáva jednu lekciu do stavu aplikácie.
+ * @param {Object} state - Aktuálny stav aplikácie.
+ * @param {Object} action - Akcia obsahujúca lekciu na pridanie.
+ */
 const lessonAdd = (state, action) => {
     const lesson = action.payload;
     state[lesson.id] = lesson;

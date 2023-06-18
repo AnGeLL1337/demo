@@ -20,6 +20,12 @@ export const LessonQueryJSON = (id) => ({
     "variables": {"id": id}
 })
 
+/**
+ * Funkcia pre vytvorenie dotazu na konkrétnu hodinu.
+ * @param {string} id - ID hodiny
+ * @returns {Promise} - Promise s výsledkom dotazu
+ */
+
 export const LessonQuery = (id) =>
     authorizedFetch('/gql', {
         body: JSON.stringify(LessonQueryJSON(id)),

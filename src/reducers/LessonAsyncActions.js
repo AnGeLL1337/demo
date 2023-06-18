@@ -2,13 +2,13 @@ import {LessonQuery} from "../queries/LessonQuery";
 import {actions} from "../pages/AppProvider";
 
 /**
- * Ask for the item on server and adds it or update it in the store to the heap
- * @param {*} id
- * @param query
- * @param resultselector
- * @param dispatch
- * @param getState
- * @returns promise
+ * Získa položku zo servera a pridá ju alebo ju aktualizuje v úložisku (store).
+ * @param {*} id - Identifikátor položky.
+ * @param {function} query - Funkcia na získanie položky zo servera.
+ * @param {function} resultselector - Funkcia na spracovanie výsledku a vytvorenie objektu položky.
+ * @param {function} dispatch - Funkcia z reduxu na vykonanie akcie.
+ * @param {function} getState - Funkcia z reduxu na získanie stavu aplikácie.
+ * @returns  - vráti výsledok operácie.
  */
 
 export const LessonFetchHelper = (id, query, resultselector, dispatch, getState) => {
@@ -42,9 +42,10 @@ export const LessonFetchHelper = (id, query, resultselector, dispatch, getState)
 }
 
 /**
- * Fetch the group from server checks its type and asks once more for detailed data. Finally puts the result in the store.
- * @param {*} id
- * @returns
+ * Získa lekciu zo servera, skontroluje jej typ a v prípade potreby požiada o detailné údaje.
+ * Nakoniec výsledok uloží do úložiska (store).
+ * @param {*} id - Identifikátor lekcie.
+ * @returns -  vráti výsledok operácie.
  */
 
 // Not using right now

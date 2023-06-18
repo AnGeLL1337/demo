@@ -14,9 +14,19 @@ const SearchButton = () => {
     const lessons = useSelector((state) => state.lessons);
 
 
+    /**
+     * Funkcia spracovávajúca zmenu hodnoty vstupného poľa.
+     * @param {Object} event - Udalosť zmeny hodnoty vstupného poľa
+     */
+
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
     };
+
+    /**
+     * Funkcia spracovávajúca kliknutie na tlačidlo vyhľadávania.
+     */
+
     const handleSearchClick = ()  => {
         const selectedLesson = lessons[searchTerm] || null;
         console.log("handleSearchClick", selectedLesson);

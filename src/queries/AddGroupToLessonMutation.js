@@ -38,6 +38,14 @@ const AddGroupToLessonMutationJSON = (lessonId, groupId) => ({
     }
 });
 
+/**
+ * Funkcia pre vytvorenie mutácie pre pridanie skupiny do hodiny.
+ * @param {Object} props - Vlastnosti mutácie
+ * @param {string} props.lessonId - ID hodiny
+ * @param {string} props.groupId - ID skupiny
+ * @returns {Promise} - Promise s výsledkom mutácie
+ */
+
 export const AddGroupToLessonMutation = (props) =>
     authorizedFetch('/gql', {
         body: JSON.stringify(AddGroupToLessonMutationJSON(props.lessonId, props.groupId)),

@@ -1,6 +1,15 @@
 import { UserActions } from "./usersreducers";
 import { UserPageQuery } from "../../queries/UserPageQuery";
 
+/**
+ * Pomocná funkcia pre získanie a spracovanie údajov o učiteloch z dotazu.
+ * @param {Function} query - Funkcia na vykonanie dotazu.
+ * @param {Function} resultSelector - Funkcia na výber správnych údajov z odpovede.
+ * @param {Function} dispatch - Funkcia na odoslanie akcie do reduxu.
+ * @param {Function} getState - Funkcia na získanie aktuálneho stavu.
+ * @returns {Promise} - Promise reprezentujúci výsledok dotazu.
+ */
+
 export const UsersFetchHelper = (query, resultSelector, dispatch, getState) => {
     const log = (text) => (p) => {
         console.log(text);
@@ -24,6 +33,12 @@ export const UsersFetchHelper = (query, resultSelector, dispatch, getState) => {
             (error) => error
         )
 };
+
+/**
+ * Funkcia pre získanie údajov o používateľoch.
+ * @returns {Function} - Redux thunk funkcia na získanie údajov o používateľoch.
+ */
+
 
 export const UserFetch = () => (dispatch, getState) => {
     const usersSelector = (json) => json.data.userPage; // Update the key to "userPage"

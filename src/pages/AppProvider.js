@@ -12,7 +12,7 @@ import { SelectedLessonReducer } from "../reducers/selectedLessonReducer";
 
 
 /**
- * Toto je hlavni store pro celou aplikaci. Zde zacleneno pro demonstraci. 
+ * Toto je hlavni store pro celou aplikaci.
  */
 export const store = configureStore(
     { 
@@ -38,6 +38,7 @@ const dispatch = store.dispatch
  * Je ovsem zadouci, aby se tyto dostaly ke "spodnim" komponentam pres props.
  * Tim se zabezpeci jejich "purity" (nejsou zavisle na globalnich parametrech)
  */
+
 export const actions = {
     ...bindLessonActions(dispatch),
     ...bindUserActions(dispatch),
