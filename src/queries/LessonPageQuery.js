@@ -24,6 +24,7 @@ export const LessonPageQueryJSON = () => ({
                 id
             }
             topic{lessons{type{id name}}}
+            linkedTo{id name}
         }
     }`
 });

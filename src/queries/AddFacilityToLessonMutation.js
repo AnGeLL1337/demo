@@ -12,24 +12,15 @@ const AddFacilityToLessonMutationJSON = (lessonId, facilityId) => ({
     id
     msg
     lesson {
-      id
-      name
-      lastchange
-      order
-      groups {
         id
         name
-      }
-      users {
-        id
-        email
-      }
-      facilities {
-        id
-        name
-      }
-      plan{id}
-        topic{lessons{type{id name}}}
+        lastchange
+        order
+        groups { id, name }
+        users { id, email }
+        facilities { id, name }
+        plan { id }
+        topic { lessons { type { id, name } } }
     }
   }
 }`,

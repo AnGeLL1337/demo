@@ -21,6 +21,8 @@ export const LessonTable = ({lessons, actions}) => {
                     <th>Typ lekce</th>
                     <th>Změna pořadí</th>
                     <th>Zmazať lekci</th>
+                    <th>Kopírovat</th>
+                    <th>Linkovat</th>
                 </tr>
             </thead>
             <tbody>
