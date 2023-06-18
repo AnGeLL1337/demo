@@ -1,13 +1,6 @@
 import {authorizedFetch} from "./authorizedFetch";
 
-/**
- *
- * @param {ID}lessonId
- * @param {string}lastchange
- * @param {number}order
- * @returns {{}}
- * @constructor
- */
+
 const UpdateLessonOrderMutationJSON = (lessonId, lastchange, order) => ({
     query:`
     mutation (
@@ -42,6 +35,16 @@ const UpdateLessonOrderMutationJSON = (lessonId, lastchange, order) => ({
     }
 
 });
+
+/**
+ * Funkcia pre vykonanie mutácie na aktualizáciu poradia hodiny.
+ * @param {Object} props - Objekt s parametrami pre mutáciu
+ * @param {string} props.lessonId - ID hodiny
+ * @param {string} props.lastchange - Čas poslednej zmeny hodiny
+ * @param {number} props.order - Nové poradie hodiny
+ * @returns {Promise} - Promise s výsledkom mutácie
+ */
+
 
 export const UpdateLessonOrderMutation = (props) =>
     authorizedFetch('/gql', {

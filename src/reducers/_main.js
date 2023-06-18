@@ -27,18 +27,33 @@ export const bindLessonActions = (dispatch) => {
     };
 };
 
+/**
+ * Vytvára akcie pre používateľov, ktoré sa vykonajú pri volaní.
+ * @param {function} dispatch - Funkcia z reduxu, ktorá vykonáva akciu.
+ * @returns {object} - Objekt obsahujúci akcie na vykonanie.
+ */
 export const bindUserActions = (dispatch) => {
     return {
         userFetch: () => dispatch(UserFetch()),
     };
 };
 
+/**
+ * Vytvára akcie pre zariadenia, ktoré sa vykonajú pri volaní.
+ * @param {function} dispatch - Funkcia z reduxu, ktorá vykonáva akciu.
+ * @returns {object} - Objekt obsahujúci akcie na vykonanie.
+ */
 export const bindFacilityActions = (dispatch) => {
     return {
         facilityFetch: () => dispatch(FacilityFetch()),
     };
 };
 
+/**
+ * Vytvára akcie pre stránku lekcií, ktoré sa vykonajú pri volaní.
+ * @param {function} dispatch - Funkcia z reduxu, ktorá vykonáva akciu.
+ * @returns {object} - Objekt obsahujúci akcie na vykonanie.
+ */
 export const bindLessonPageActions = (dispatch) => {
     return {
         lessonPageFetch: () => dispatch(LessonPageFetch()),

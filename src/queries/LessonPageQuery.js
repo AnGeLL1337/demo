@@ -29,6 +29,12 @@ export const LessonPageQueryJSON = () => ({
     }`
 });
 
+
+/**
+ * Funkcia pre vytvorenie dotazu na stránku hodín.
+ * @returns {Promise} - Promise s výsledkom dotazu
+ */
+
 export const LessonPageQuery = () =>
     authorizedFetch('/gql', {
         body: JSON.stringify(LessonPageQueryJSON()),

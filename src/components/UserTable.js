@@ -2,12 +2,10 @@ import React from 'react';
 import { UserTableRow } from './UserTableRow';
 
 /**
- * Component for rendering a table of users.
- *
- * @component
- * @param {Object} props - The component props.
- * @param {Array} props.users - The array of user objects to be displayed in the table.
- * @returns {JSX.Element} - The rendered UserTable component.
+ * Komponenta tabuľka používateľov.
+ * @param {Object} props - Vlastnosti komponenty
+ * @param {Array} props.users - Zoznam používateľov
+ * @returns {JSX.Element} - Tabuľka používateľov
  */
 
 export const UserTable = ({ users }) => {

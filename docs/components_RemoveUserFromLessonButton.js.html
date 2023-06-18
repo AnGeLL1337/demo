@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/RemoveUserFromLessonButton.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/RemoveUserFromLessonButton.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { useDispatch } from 'react-redux';
+import { RemoveUserFromLessonMutation } from '../queries/RemoveUserFromLessonMutation';
+import { actions } from "../pages/AppProvider";
+
+/**
+ * Komponenta tlačidlo, které odebírá uživatele z hodiny.
+ * @param {Object} props - Vlastnosti komponenty
+ * @param {string} props.userId - ID uživatele
+ * @param {string} props.lessonId - ID hodiny
+ * @returns {JSX.Element} - Tlačidlo pro odebrání uživatele z hodiny
+ */
+const RemoveUserFromLessonButton = ({ userId, lessonId }) => {
+    const dispatch = useDispatch();
+
+    /**
+     * Spracování kliknutí na tlačidlo RemoveUserFromLessonButton.
+     * @async
+     */
+    const handleClick = async () => {
+        try {
+            const response = await RemoveUserFromLessonMutation({ userId, lessonId });
+            const data = await response.json();
+            console.log('RemoveUserFromLessonButton: response:', data); // Log the response data
+
+            if (data.data.plannedLessonUserDelete.msg === 'ok') {
+                const updatedLesson = data.data.plannedLessonUserDelete.lesson;
+                console.log('RemoveUserFromLessonButton: updatedLesson:', updatedLesson); // Log the updated selectedLesson
+                dispatch(actions.onLessonUpdate(updatedLesson));
+                dispatch(actions.setSelectedLesson(updatedLesson));
+                console.log(`User with ID ${userId} removed from lesson with ID ${lessonId}`);
+            } else {
+                console.log('User is not removed from selectedLesson');
+            }
+        } catch (error) {
+            console.error('Error removing user from selectedLesson:', error);
+        }
+    };
+
+    return (
+        &lt;button className="btn btn-danger" onClick={handleClick}>
+            Remove User from Lesson
+        &lt;/button>
+    );
+};
+
+export default RemoveUserFromLessonButton;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AddFacilityToLessonButton">AddFacilityToLessonButton</a></li><li><a href="global.html#AddFacilityToLessonMutation">AddFacilityToLessonMutation</a></li><li><a href="global.html#AddGroupToLessonMutation">AddGroupToLessonMutation</a></li><li><a href="global.html#AddUserToLessonButton">AddUserToLessonButton</a></li><li><a href="global.html#AddUserToLessonMutation">AddUserToLessonMutation</a></li><li><a href="global.html#AppProvider">AppProvider</a></li><li><a href="global.html#DeleteLessonButton">DeleteLessonButton</a></li><li><a href="global.html#DeleteLessonMutation">DeleteLessonMutation</a></li><li><a href="global.html#FacilityFetch">FacilityFetch</a></li><li><a href="global.html#FacilityFetchHelper">FacilityFetchHelper</a></li><li><a href="global.html#FacilityPage">FacilityPage</a></li><li><a href="global.html#FacilityPageQuery">FacilityPageQuery</a></li><li><a href="global.html#FacilityTable">FacilityTable</a></li><li><a href="global.html#FacilityTableRow">FacilityTableRow</a></li><li><a href="global.html#LessonFetch">LessonFetch</a></li><li><a href="global.html#LessonFetchHelper">LessonFetchHelper</a></li><li><a href="global.html#LessonPage">LessonPage</a></li><li><a href="global.html#LessonPageFetch">LessonPageFetch</a></li><li><a href="global.html#LessonPageFetchHelper">LessonPageFetchHelper</a></li><li><a href="global.html#LessonPageQuery">LessonPageQuery</a></li><li><a href="global.html#LessonQuery">LessonQuery</a></li><li><a href="global.html#LessonSlice">LessonSlice</a></li><li><a href="global.html#LessonTable">LessonTable</a></li><li><a href="global.html#LessonTableRow">LessonTableRow</a></li><li><a href="global.html#LoadAllLessonsButton">LoadAllLessonsButton</a></li><li><a href="global.html#RemoveUserFromLessonButton">RemoveUserFromLessonButton</a></li><li><a href="global.html#SearchButton">SearchButton</a></li><li><a href="global.html#SelectedLessonProvider">SelectedLessonProvider</a></li><li><a href="global.html#SelectedLessonTable">SelectedLessonTable</a></li><li><a href="global.html#SelectedLessonTableRow">SelectedLessonTableRow</a></li><li><a href="global.html#UpdateLessonOrderButton">UpdateLessonOrderButton</a></li><li><a href="global.html#UpdateLessonOrderMutation">UpdateLessonOrderMutation</a></li><li><a href="global.html#UserFetch">UserFetch</a></li><li><a href="global.html#UserPage">UserPage</a></li><li><a href="global.html#UserPageQuery">UserPageQuery</a></li><li><a href="global.html#UserTable">UserTable</a></li><li><a href="global.html#UserTableRow">UserTableRow</a></li><li><a href="global.html#UsersFetchHelper">UsersFetchHelper</a></li><li><a href="global.html#actions">actions</a></li><li><a href="global.html#authorizedFetch">authorizedFetch</a></li><li><a href="global.html#bindFacilityActions">bindFacilityActions</a></li><li><a href="global.html#bindLessonActions">bindLessonActions</a></li><li><a href="global.html#bindLessonPageActions">bindLessonPageActions</a></li><li><a href="global.html#bindUserActions">bindUserActions</a></li><li><a href="global.html#facilitySlice">facilitySlice</a></li><li><a href="global.html#lessonAdd">lessonAdd</a></li><li><a href="global.html#lessonRemove">lessonRemove</a></li><li><a href="global.html#lessonUpdate">lessonUpdate</a></li><li><a href="global.html#lessonpage_add">lessonpage_add</a></li><li><a href="global.html#selectedLessonRemove">selectedLessonRemove</a></li><li><a href="global.html#selectedLessonSlice">selectedLessonSlice</a></li><li><a href="global.html#setSelectedLesson">setSelectedLesson</a></li><li><a href="global.html#store">store</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Jun 19 2023 00:16:04 GMT+0200 (stredoeurópsky letný čas)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -12,6 +12,11 @@ export const UsersQueryJSON = () => ({
         }`
 })
 
+/**
+ * Funkcia pre získanie dát o stránke používateľov.
+ * @returns {Promise} - Promise s výsledkom dotazu
+ */
+
 export const UserPageQuery = () =>
     authorizedFetch('/gql', {
         body: JSON.stringify(UsersQueryJSON()),
