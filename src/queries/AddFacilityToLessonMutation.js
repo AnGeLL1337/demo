@@ -12,24 +12,15 @@ const AddFacilityToLessonMutationJSON = (lessonId, facilityId) => ({
     id
     msg
     lesson {
-      id
-      name
-      lastchange
-      order
-      groups {
         id
         name
-      }
-      users {
-        id
-        email
-      }
-      facilities {
-        id
-        name
-      }
-      plan{id}
-        topic{lessons{type{id name}}}
+        lastchange
+        order
+        groups { id, name }
+        users { id, email }
+        facilities { id, name }
+        plan { id }
+        topic { lessons { type { id, name } } }
     }
   }
 }`,
@@ -38,6 +29,14 @@ const AddFacilityToLessonMutationJSON = (lessonId, facilityId) => ({
         facilityId: facilityId,
     }
 });
+
+/**
+ * Funkcia pre vytvorenie mutácie pre pridanie zariadenia do hodiny.
+ * @param {Object} props - Vlastnosti mutácie
+ * @param {string} props.lessonId - ID hodiny
+ * @param {string} props.facilityId - ID zariadenia
+ * @returns {Promise} - Promise s výsledkom mutácie
+ */
 
 export const AddFacilityToLessonMutation = (props) =>
     authorizedFetch('/gql', {

@@ -41,6 +41,14 @@ const AddUserToLessonMutationJSON = (lessonId, userId) => ({
     }
 });
 
+/**
+ * Funkcia pre vytvorenie mutácie pre pridanie učiteľa do hodiny.
+ * @param {Object} props - Vlastnosti mutácie
+ * @param {string} props.lessonId - ID hodiny
+ * @param {string} props.userId - ID učiteľa
+ * @returns {Promise} - Promise s výsledkom mutácie
+ */
+
 export const AddUserToLessonMutation = (props) =>
     authorizedFetch('/gql', {
         body: JSON.stringify(AddUserToLessonMutationJSON(props.lessonId, props.userId)),

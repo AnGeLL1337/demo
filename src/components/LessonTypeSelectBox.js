@@ -4,10 +4,26 @@ import {useDispatch} from "react-redux";
 import {ChangeLessonTypeMutation} from "../queries/ChangeLessonTypeMutation";
 import {actions} from "../pages/AppProvider";
 
+/**
+ * Component for selecting the lesson type.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {Object} props.lesson - The lesson object.
+ * @returns {JSX.Element} - The rendered LessonTypeSelectBox component.
+ */
+
 export const LessonTypeSelectBox = (props) => {
     const {lesson} = props;
     const [selectedType, setSelectedType] = useState(lesson.type);
     const dispatch = useDispatch();
+
+    /**
+     * Changes the lesson type using the ChangeLessonTypeMutation.
+     *
+     * @async
+     * @param {Object} lesson - The lesson object.
+     */
 
     async function changeType(lesson) {
         const response = await ChangeLessonTypeMutation(lesson.id, lesson.lastchange, lesson.topic.lessons[0].type.id);
@@ -37,9 +53,10 @@ export const LessonTypeSelectBox = (props) => {
     return (
         <Form.Select
             aria-label="LessonTypeBox"
+            style={{width: '50%'}}
             value={selectedType ?? 'NULL'}
             onChange={event => handleChange(event.target.value, lesson)}>
-           <option>SS</option>
+           <option>base</option>
             <option value="e2b7c66a-95e1-11ed-a1eb-0242ac120002">cvičení</option>
             <option value="e2b7cbf6-95e1-11ed-a1eb-0242ac120002">přednáška</option>
             <option value="e2b7cfac-95e1-11ed-a1eb-0242ac120002">laboratorní cvičení</option>

@@ -3,6 +3,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {bindFacilityActions} from "../reducers/_main";
 import {FacilityTable} from "../components/FacilityTable";
 
+/**
+ * Komponenta na zobrazenie všetkých zaridení.
+ * @returns {JSX.Element} - Stránka zariadení
+ */
+
 export const FacilityPage = () => {
     const dispatch = useDispatch();
     const facilities = useSelector(state => state.facilities || []);

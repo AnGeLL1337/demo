@@ -24,9 +24,16 @@ export const LessonPageQueryJSON = () => ({
                 id
             }
             topic{lessons{type{id name}}}
+            linkedTo{id name}
         }
     }`
 });
+
+
+/**
+ * Funkcia pre vytvorenie dotazu na stránku hodín.
+ * @returns {Promise} - Promise s výsledkom dotazu
+ */
 
 export const LessonPageQuery = () =>
     authorizedFetch('/gql', {

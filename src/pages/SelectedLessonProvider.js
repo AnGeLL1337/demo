@@ -6,9 +6,13 @@ import {SelectedLessonTable} from "../components/SelectedLessonTable";
 
 /**
  * Komponenta, která poskytuje data a funkce pro práci s lekcemi.
- * @returns
+ * @returns {JSX.Element} Komponenta SelectedLessonProvider
  */
 export const SelectedLessonProvider = () => {
+    /**
+     * Vybraná lekce zo stavu aplikácie.
+     * @type {Object|null}
+     */
     const selectedLesson = useSelector((state) => state.selectedLesson.selectedLesson);
 
     console.log("SelectedLessonProvider", selectedLesson)

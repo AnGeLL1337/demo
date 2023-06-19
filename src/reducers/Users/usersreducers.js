@@ -6,10 +6,15 @@ const usersSlice = createSlice({
         users: [],
     },
     reducers: {
+        /**
+         * Akcia na aktualizáciu údajov o používateľoch.
+         * @param {Object} state - Aktuálny stav.
+         * @param {Object} action - Redux akcia.
+         * @returns {Object} - Nový stav.
+         */
         users_Update: (state, action) => {
             return action.payload;
         },
-        // other user-related actions...
     },
 });
 
