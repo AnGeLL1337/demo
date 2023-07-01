@@ -5,6 +5,7 @@ import {LessonTypeSelectBox} from "./LessonTypeSelectBox";
 import DeleteLessonButton from "./DeleteLessonButton";
 import LinkLessonsButton from "./LinkLessonsButton";
 import {useSelector} from "react-redux";
+import LinkLessonTopicWithAcTopicButton from "./LinkLessonTopicWithAcTopicButton";
 
 /**
  * Komponenta reprezentujúca jeden riadok v tabuľke s lekciami.
@@ -52,7 +53,10 @@ export  const LessonTableRow = ({lesson, actions}) => {
             </td>
             <td>
                 <LinkLessonsButton lessonId={lesson.id} lastchange={lesson.lastchange} linkedLessonId={(selectedLesson === null) ? "704e7bc2-b1d6-4fe3-95ce-b008b352dd59" : selectedLesson.id}/>
-                </td>
+            </td>
+            <td>
+                <LinkLessonTopicWithAcTopicButton lessonId={lesson.id} lastchange={lesson.lastchange} topicId={"ce250b44-b095-11ed-9bd8-0242ac110002"} semesterId={"ce250af4-b095-11ed-9bd8-0242ac110002"}/>
+            </td>
         </tr>
     )
 

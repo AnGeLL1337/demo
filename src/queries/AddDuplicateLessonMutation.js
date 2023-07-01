@@ -16,7 +16,9 @@ const AddDuplicateLessonMutationJSON = (lesson) => ({
         name, 
         lastchange, 
         order, 
-        plan { id }          
+        plan { id }     
+        topic { id name }
+        semester { id }  
     }
   }
 }`

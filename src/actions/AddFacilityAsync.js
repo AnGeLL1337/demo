@@ -1,9 +1,11 @@
 import {AddFacilityToLessonMutation} from "../queries/AddFacilityToLessonMutation";
 import {actions} from "../pages/AppProvider";
 
+// Zatvorky -
 export const addFacilityAsync = ({facilityId, lessonId}) => async (dispatch) => {
+    let result = null;
     try{
-        AddFacilityToLessonMutation({facilityId, lessonId})
+        result = AddFacilityToLessonMutation({facilityId, lessonId})
             .then(
                 response => response.json())
             .then(json => {
@@ -19,4 +21,5 @@ export const addFacilityAsync = ({facilityId, lessonId}) => async (dispatch) => 
     } catch (error) {
         console.error('Error adding facility to selectedLesson:', error);
     }
+    return result;
 }
