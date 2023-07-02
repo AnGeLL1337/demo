@@ -1,20 +1,24 @@
 import {authorizedFetch} from "./authorizedFetch";
 
 const AddDuplicateLessonMutationJSON = (lesson) => ({
-    "query":`
+    query:`
     mutation {
   plannedLessonInsert(
   lesson:{
   name:"${lesson.name + "-COPY"}"  
   planId:"${lesson.plan.id}"
-  order:${lesson.order}
   }
   ) {
     id
     msg
-    lesson{
-        id, name, lastchange, order, plan{id}
-          
+    lesson {
+        id, 
+        name, 
+        lastchange, 
+        order, 
+        plan { id }     
+        topic { id name }
+        semester { id }  
     }
   }
 }`

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { RemoveUserFromLessonMutation } from '../queries/RemoveUserFromLessonMutation';
-import { actions } from "../pages/AppProvider";
+import {removeUserAsync} from "../actions/RemoveUserFromLessonAsync";
+
 
 /**
  * Komponenta tlačidlo, které odebírá uživatele z hodiny.
@@ -13,32 +13,9 @@ import { actions } from "../pages/AppProvider";
 const RemoveUserFromLessonButton = ({ userId, lessonId }) => {
     const dispatch = useDispatch();
 
-    /**
-     * Spracování kliknutí na tlačidlo RemoveUserFromLessonButton.
-     * @async
-     */
-    const handleClick = async () => {
-        try {
-            const response = await RemoveUserFromLessonMutation({ userId, lessonId });
-            const data = await response.json();
-            console.log('RemoveUserFromLessonButton: response:', data); // Log the response data
-
-            if (data.data.plannedLessonUserDelete.msg === 'ok') {
-                const updatedLesson = data.data.plannedLessonUserDelete.lesson;
-                console.log('RemoveUserFromLessonButton: updatedLesson:', updatedLesson); // Log the updated selectedLesson
-                dispatch(actions.onLessonUpdate(updatedLesson));
-                dispatch(actions.setSelectedLesson(updatedLesson));
-                console.log(`User with ID ${userId} removed from lesson with ID ${lessonId}`);
-            } else {
-                console.log('User is not removed from selectedLesson');
-            }
-        } catch (error) {
-            console.error('Error removing user from selectedLesson:', error);
-        }
-    };
-
     return (
-        <button className="btn btn-danger" onClick={handleClick}>
+        <button className="btn btn-danger" onClick={() =>
+        {dispatch(removeUserAsync({userId,lessonId}))}}>
             Remove User from Lesson
         </button>
     );
