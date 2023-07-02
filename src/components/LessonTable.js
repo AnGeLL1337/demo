@@ -1,5 +1,4 @@
 import  {LessonTableRow} from "./LessonTableRow";
-
 /**
  * Komponent LessonTable zobrazuje zoznam všetkých lessons v tabuľkovej forme.
  *
