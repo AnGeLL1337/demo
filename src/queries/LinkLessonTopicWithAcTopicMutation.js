@@ -42,6 +42,17 @@ const LinkLessonTopicWithAcTopicMutationJSON = (lessonId, lastchange, topicId, s
     }
 });
 
+/**
+ * function for creating mutation for linking lesson with topic
+ *
+ * @param {Object} props - The parameters for the mutation.
+ * @param {string} props.lessonId - The ID of the lesson.
+ * @param {Date} props.lastchange - The last change date of the lesson.
+ * @param {string} props.topicId - The ID of the topic.
+ * @param {string} props.semesterId - The ID of the semester.
+ * @returns {Promise} - A promise that resolves with the mutation response.
+ */
+
 export const LinkLessonTopicWithAcTopicMutation = ({lessonId, lastchange, topicId, semesterId}) =>
     authorizedFetch('/gql', {
         body: JSON.stringify(LinkLessonTopicWithAcTopicMutationJSON(lessonId, lastchange, topicId, semesterId)),
